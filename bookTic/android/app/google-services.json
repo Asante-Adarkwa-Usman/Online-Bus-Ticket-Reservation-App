@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "551025544937",
+    "firebase_url": "https://booktickapp.firebaseio.com",
+    "project_id": "booktickapp",
+    "storage_bucket": "booktickapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:551025544937:android:8e8b567b21417be8826a78",
+        "android_client_info": {
+          "package_name": "com.booktic"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "551025544937-39devd7i0vpk8umb8gdgkjkb6n1tndm1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.booktic",
+            "certificate_hash": "a55708fa82dc6937ee60ede2fb1a298e186f9cd1"
+          }
+        },
+        {
+          "client_id": "551025544937-keajjng1jlua5p5o4gj6lnpagoiqsdg2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCidh38PK3mQj0v62gZ0Je-7xJ7AOnQlAM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "551025544937-knb401ag1m3lfk5b459j0sgdm2dg744p.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
