@@ -11,23 +11,30 @@ import {
   TextInput,KeyboardAvoidingView, Alert,
 } from 'react-native';
 
+
 import Icon from 'react-native-vector-icons';
 import {theme} from '../Constants/themes';
 import Button from 'react-native-button';
+import Signup from '../Screens/Signup';
 
 
 export default class Login extends Component{
 
-  
+   render(){
 
-  render(){
-   let _onPress = () =>{
+  
+   let _onPressLogin = () =>{
       Alert.alert("login successful");
     }
-    let onRegisterTextPress = ()=>{
-      alert('go to signup page');
-    }
+   
+  //  let btnRegister = () => {
+     
+  // navigation.navigate('SignUp');
+  //  }
+    
+    
     return(
+
      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <View  style= {styles.container}>
        
@@ -57,13 +64,13 @@ export default class Login extends Component{
        
        />
       <Button style={styles.btnContainer}
-       onPress= {_onPress}
+       onPress= {_onPressLogin}
        >
        Login
 
         </Button>
       <Button>
-        <Text style={styles.registerText} onPress={onRegisterTextPress} 
+        <Text style={styles.registerText} onPress={() => this.props.navigation.navigate('Register')} 
         >New here? SignUp
          </Text>
        
@@ -74,8 +81,8 @@ export default class Login extends Component{
        
       </View>
    </TouchableWithoutFeedback> 
+ 
     );
-
   }
 }
 
@@ -87,8 +94,8 @@ const styles = StyleSheet.create({
    flexDirection:'column',
    alignItems: 'center',
    backgroundColor: '#FECE21',
-   borderTopLeftRadius:20,
-   borderTopRightRadius: 20,
+  //  borderTopLeftRadius:20,
+  //  borderTopRightRadius: 20,
    borderRightColor:theme.color.orange,
    borderLeftColor:theme.color.orange,
    
@@ -111,8 +118,8 @@ const styles = StyleSheet.create({
    height: 150, 
   backgroundColor: 'white',
   alignItems:'center',
-  borderBottomLeftRadius: 20,
-  borderBottomRightRadius: 20,
+  borderTopLeftRadius: 20,
+  borderTopRightRadius: 20,
   borderBottomColor:theme.color.orange 
  },
  input:{
@@ -121,7 +128,7 @@ const styles = StyleSheet.create({
    width:300,
    marginHorizontal: 20,
    paddingHorizontal:10,
-   marginBottom:15,
+   marginBottom:10,
    fontSize: 18,
    fontWeight: 'normal',
    padding: 15,
@@ -142,6 +149,7 @@ const styles = StyleSheet.create({
    padding: 10,
    marginLeft: 30,
    marginBottom: 10
+
 
  },
  registerText:{

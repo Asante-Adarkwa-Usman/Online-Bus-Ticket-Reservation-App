@@ -6,32 +6,27 @@ import {
   ScrollView,
   View,Image,Keyboard,
   Text,Dimensions,
-  StatusBar,TouchableWithoutFeedback,
+  StatusBar,TouchableWithoutFeedback,TouchableOpacity,
   TextInput,KeyboardAvoidingView, Alert,
 } from 'react-native';
 
 import {theme} from '../Constants/themes';
 import Button from 'react-native-button';
+import { createStackNavigator } from '@react-navigation/stack';
+
+import Login from '../Screens/Login';
 
 
-export default class Signup extends Component{
-    constructor(props){
-       super(props);
+export default class Signup extends Component {
 
-       this.state=({
+  render(){
 
-       })
-    }
-
-    render(){
-
-      let onLoginTextPress = ()=>{
-        Alert.alert("go to login page");
+   
+      let btnSignupPressed = ()=>{
+      
+        alert('signup successful');
       }
       
-      let btnSignupPressed = ()=>{
-        alert('Account created successfully');
-      }
 
         return(
           <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
@@ -82,20 +77,24 @@ export default class Signup extends Component{
         </Button>
 
       
-      <Button>
-        <Text style={styles.registerText} onPress={onLoginTextPress} 
+      <TouchableOpacity>
+        <Text style={styles.registerText} 
+        onPress={ () => this.props.navigation.navigate('Welcome')} 
         >signup already? login
          </Text>
        
-       </Button>
+       </TouchableOpacity>
        
        </View>
      </View>
        
       </View>
+  
    </TouchableWithoutFeedback> 
         );
-    }
+    
+ }
+
 }
 
 
@@ -114,30 +113,27 @@ const styles = StyleSheet.create({
  
   },
   textHeader:{
-   flex:1 / 2,
+   flex:1 ,
    fontFamily:'cursive',
    fontSize:35,
    fontWeight: 'bold',
    marginTop: 30,
    color: theme.color.black,
-   marginBottom: 40,
+   marginBottom: 20,
    padding:10
   },
+
   inputContainer:{
    flex:1 + 2,
     flexDirection:'column',
-    marginTop:5,
+  
     width: Dimensions.get('window').width,
     height: 150, 
    backgroundColor: 'white',
    alignItems:'center',
-   borderBottomLeftRadius: 30,
-   borderBottomRightRadius: 30,
    borderBottomColor:theme.color.orange ,
    borderTopLeftRadius: 20,
    borderTopRightRadius: 20,
-   
-
    
 
   },
@@ -150,7 +146,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: 'normal',
     padding: 15,
-    marginTop: 10,
+    marginTop:15,
     
  
   },
@@ -165,7 +161,7 @@ const styles = StyleSheet.create({
     fontWeight:'normal',
     borderRadius:15,
     padding: 10,
-    marginTop:5,
+    marginTop:10,
     marginLeft: 30,
     marginBottom: 10
  

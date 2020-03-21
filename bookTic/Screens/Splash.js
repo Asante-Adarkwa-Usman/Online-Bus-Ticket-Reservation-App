@@ -14,10 +14,15 @@ import {theme} from '../Constants/themes';
 import Button from 'react-native-button';
 
 
+
 export default class Splash extends Component{
+
+  
+
   
     render(){
 
+     
 
         return(
         
@@ -52,7 +57,7 @@ const styles = StyleSheet.create({
     borderRightColor:theme.color.orange,
     borderLeftColor:theme.color.orange,
     borderBottomLeftRadius: 500,
-    borderTopRightRadius: 30
+   // borderTopRightRadius: 30
   },
 
 textHeader:{
