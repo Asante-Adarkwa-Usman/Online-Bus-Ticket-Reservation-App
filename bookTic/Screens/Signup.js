@@ -24,7 +24,7 @@ export default class Signup extends Component {
    
       let btnSignupPressed = ()=>{
       
-        alert('signup successful');
+        Alert. alert("Account Registeration","signup successful");
       }
       
 
@@ -33,8 +33,11 @@ export default class Signup extends Component {
       <View  style= {styles.container}>
        
         <Text style= {styles.textHeader}>Register</Text>
+         
+      
         
        <View style={ styles.inputContainer }>
+          
         <View style= { {alignContent:'center',justifyContent:'center',alignItems:'center',margin:20} }>
      
        <TextInput  style={styles.input}

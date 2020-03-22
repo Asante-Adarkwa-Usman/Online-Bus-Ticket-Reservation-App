@@ -16,6 +16,7 @@ import Icon from 'react-native-vector-icons';
 import {theme} from '../Constants/themes';
 import Button from 'react-native-button';
 import Signup from '../Screens/Signup';
+import Location from '../Screens/Location';
 
 
 export default class Login extends Component{
@@ -24,13 +25,22 @@ export default class Login extends Component{
 
   
    let _onPressLogin = () =>{
-      Alert.alert("login successful");
+      Alert.alert("Account","login successful");
+
+      if(Alert){
+         setTimeout(()=> {
+      
+       this.props.navigation.navigate('location');
+      }, 1000);
+
+     
+     
+      }else{
+        (error) => console.log(error);
+         this.props.navigation.navigate('Welcome');
+      }
     }
    
-  //  let btnRegister = () => {
-     
-  // navigation.navigate('SignUp');
-  //  }
     
     
     return(

@@ -6,6 +6,7 @@ import {name as appName} from './app.json';
 import Splash from './Screens/Splash';
 import Signup from './Screens/Signup';
 import Login from './Screens/Login';
+import Location from './Screens/Location';
 
  class Main extends Component{
  	 constructor(props){
@@ -15,7 +16,7 @@ import Login from './Screens/Login';
       this.state= {currentScreen: 'Splash'};
 
       setTimeout(()=> {
-       // console.log('welcome to BookTic app');
+      
         this.setState({ currentScreen: 'Login'});
       }, 3000)
 
