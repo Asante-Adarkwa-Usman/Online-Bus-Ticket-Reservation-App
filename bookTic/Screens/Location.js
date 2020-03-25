@@ -7,7 +7,7 @@ import {
   View,Image,Keyboard,
   Text,Dimensions,
   StatusBar,TouchableWithoutFeedback,
-  TextInput,KeyboardAvoidingView, Alert,
+  TextInput,KeyboardAvoidingView, Alert,Picker
 } from 'react-native';
 
 import {theme} from '../Constants/themes';
@@ -17,25 +17,121 @@ import Button from 'react-native-button';
 
 
 export default class Location extends Component{
+   constructor(){
+   	super();
+   	this.state={
+   		selectedLabelCurrent:'',
+   		selectedLabelDestination: ''
+   	
+
+       }
+   }
+
+  ShowCurrent =(value)=>{
+            this.setState({selectedLabelCurrent:value});
+               }
 
 
 
+ShowDestination =(text)=>{
+            this.setState({selectedLabelDestination:text});
+               }
 
 
 
 	render(){
+	
 
 		return(
 
-              <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+              
+              <View style={{backgroundColor: theme.color.offWhite, flex:1, alignItems: 'center',justifyContent: 'center',alignContent:'center'}}>
+        
+             <View>
 
-              <View style={styles.container} >
-                
-                <Text style= {styles.textHeader}>Welcome to Location page</Text>
-                
+              <View>
+
+                 <Text style={styles.textHeader}>Where are you currently?</Text>
+
+              <Picker style={styles.picker}
+                onValueChange={ this.ShowCurrent }
+                selectedValue={this.state.selectedLabelCurrent}
+              > 
+                 <Picker.Item label="Select Region" value="Select Region" color="#FECE21" ></Picker.Item>
+                 <Picker.Item label="Greater Accra"  value="Accra"></Picker.Item>
+                 <Picker.Item label="Ashanti Region"  value="Kumasi"></Picker.Item>
+                 <Picker.Item label="Western Region"  value="Takoradi"></Picker.Item>
+                 <Picker.Item label="Volta Region"  value="Ho"></Picker.Item>
+                 <Picker.Item label="Bono Region"  value="Sunyani"></Picker.Item>
+                 <Picker.Item label="Bono East Region"  value="Techiman"></Picker.Item>
+                 <Picker.Item label="Northern Region"  value="Tamale"></Picker.Item>
+                 <Picker.Item label="Eastern Region"  value="Koforidua"></Picker.Item>
+                 <Picker.Item label="Western North Region"  value="Wiawso"></Picker.Item>
+                 <Picker.Item label="Northern Region"  value="Tamale"></Picker.Item>
+                 <Picker.Item label="Central Region" value="Cape Coast" ></Picker.Item>
+                 <Picker.Item label="Oti Region" value="Dambai" ></Picker.Item>
+                 <Picker.Item label="Upper East Region" value="Bolgatanga" ></Picker.Item>
+                 <Picker.Item label="Upper West Region" value="Wa" ></Picker.Item>
+                 <Picker.Item label="Ahafo Region" value="Goaso" ></Picker.Item>
+                 <Picker.Item label="Savannah Region" value="Damongo" ></Picker.Item>
+
+
+
+
+              </Picker>
+
               </View>
 
-             </TouchableWithoutFeedback>
+           <Text style={styles.textHeader}>
+            Where do you want to go? 
+
+            </Text>
+
+            
+
+            <Picker  style={styles.picker}
+                     onValueChange={ this.ShowDestination }
+                selectedValue={this.state.selectedLabelDestination}
+            >
+                   <Picker.Item label="Select Destination" value="destination" color="#FECE21" ></Picker.Item>
+                 <Picker.Item label="Greater Accra"  value="Accra"></Picker.Item>
+                 <Picker.Item label="Ashanti Region"  value="Kumasi"></Picker.Item>
+                 <Picker.Item label="Western Region"  value="Takoradi"></Picker.Item>
+                 <Picker.Item label="Volta Region"  value="Ho"></Picker.Item>
+                 <Picker.Item label="Bono Region"  value="Sunyani"></Picker.Item>
+                 <Picker.Item label="Bono East Region"  value="Techiman"></Picker.Item>
+                 <Picker.Item label="Northern Region"  value="Tamale"></Picker.Item>
+                 <Picker.Item label="Eastern Region"  value="Koforidua"></Picker.Item>
+                 <Picker.Item label="Western North Region"  value="Wiawso"></Picker.Item>
+                 <Picker.Item label="Northern Region"  value="Tamale"></Picker.Item>
+                 <Picker.Item label="Central Region" value="Cape Coast" ></Picker.Item>
+                 <Picker.Item label="Oti Region" value="Dambai" ></Picker.Item>
+                 <Picker.Item label="Upper East Region" value="Bolgatanga" ></Picker.Item>
+                 <Picker.Item label="Upper West Region" value="Wa" ></Picker.Item>
+                 <Picker.Item label="Ahafo Region" value="Goaso" ></Picker.Item>
+                 <Picker.Item label="Savannah Region" value="Damongo" ></Picker.Item>
+
+
+
+
+            </Picker>
+
+            <View style={styles.btnStyle}>
+                 <Button style={styles.btnContainer}
+
+                 >Done</Button>
+
+            </View>
+
+             
+             </View> 
+
+
+            </View> 
+
+             
+
+         
 			);
 
 	}
@@ -48,7 +144,6 @@ const styles = StyleSheet.create({
     alignContent:'center',
     justifyContent:'center',
     flexDirection:'column',
-    alignItems: 'center',
     backgroundColor: '#FECE21',
     borderRightColor:theme.color.orange,
     borderLeftColor:theme.color.orange,
@@ -57,14 +152,59 @@ const styles = StyleSheet.create({
  
   },
    textHeader:{
-   flex:1 ,
-   fontFamily:'cursive',
-   fontSize:35,
+   fontSize:20,
    fontWeight: 'bold',
    marginTop: 30,
    color: theme.color.black,
-   marginBottom: 20,
-   padding:10
-  }
+   marginLeft:10
+   
+  },
+
+ inputContainer:{
+  flex:1,
+   flexDirection:'column',
+   marginTop:10,
+   width: Dimensions.get('window').width,
+   height: 150, 
+  backgroundColor: 'white',
+  alignItems:'center',
+  borderTopLeftRadius: 20,
+  borderTopRightRadius: 20,
+  borderBottomColor:theme.color.orange 
+ },
+ picker:{
+ 	
+    
+ 	flexDirection: 'column',
+    color: "black",
+ 	fontSize: 50,
+ 	fontWeight: 'bold',
+ 	borderRadius: 20,
+ 	marginHorizontal: 10,
+ 	marginTop: 20,
+ 	marginBottom: 20
+    
+
+ },
+ btnContainer:{
+    flexDirection: 'row',
+    width: 150,
+    alignItems:'center',
+    height: 45,
+    color: theme.color.black,
+    backgroundColor:'#FECE21' ,
+    fontSize: 18,
+    fontWeight:'normal',
+    borderRadius:15,
+    padding: 10,
+    marginTop:10,
+    marginLeft: 30,
+    marginBottom: 10
+ 
+  },
+  btnStyle: {
+  	alignItems:'center',
+  	justifyContent:'center'
+  },
 
 });

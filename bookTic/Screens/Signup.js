@@ -108,7 +108,7 @@ const styles = StyleSheet.create({
     justifyContent:'center',
     flexDirection:'column',
     alignItems: 'center',
-    backgroundColor: '#FECE21',
+    backgroundColor:'#FECE21' ,
     borderRightColor:theme.color.orange,
     borderLeftColor:theme.color.orange,
     
@@ -128,11 +128,10 @@ const styles = StyleSheet.create({
 
   inputContainer:{
    flex:1 + 2,
-    flexDirection:'column',
-  
-    width: Dimensions.get('window').width,
-    height: 150, 
-   backgroundColor: 'white',
+   flexDirection:'column',
+   width: Dimensions.get('window').width,
+   height: 150, 
+   backgroundColor: theme.color.offWhite,
    alignItems:'center',
    borderBottomColor:theme.color.orange ,
    borderTopLeftRadius: 20,

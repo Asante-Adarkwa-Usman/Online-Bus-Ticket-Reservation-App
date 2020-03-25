@@ -25,7 +25,7 @@ export default class Splash extends Component{
         
       <View  style= {styles.container}>
        
-        <Text style= {styles.textHeader}>Book Ticket</Text>
+        <Text style= {styles.textHeader}>Book a Ticket</Text>
         <View style={styles.imageContainer}>
         
         <Image 
@@ -53,8 +53,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#FECE21',
     borderRightColor:theme.color.orange,
     borderLeftColor:theme.color.orange,
-    borderBottomLeftRadius: 500,
-   // borderTopRightRadius: 30
+    //borderBottomLeftRadius: 500,
+
   },
 
 textHeader:{

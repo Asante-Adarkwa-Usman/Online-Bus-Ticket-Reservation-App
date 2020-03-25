@@ -37,7 +37,7 @@ export default class Login extends Component{
      
       }else{
         (error) => console.log(error);
-         this.props.navigation.navigate('Welcome');
+        
       }
     }
    
@@ -126,7 +126,7 @@ const styles = StyleSheet.create({
    marginTop:10,
    width: Dimensions.get('window').width,
    height: 150, 
-  backgroundColor: 'white',
+  backgroundColor: theme.color.offWhite,
   alignItems:'center',
   borderTopLeftRadius: 20,
   borderTopRightRadius: 20,
