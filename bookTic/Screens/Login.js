@@ -48,6 +48,11 @@ export default class Login extends Component{
      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <View  style= {styles.container}>
 
+             <Image 
+         style={styles.backGroundStyle}
+          source={require('../Constants/Assets/BgPattern.png')}
+        ></Image> 
+
             <View style={styles.logoContainer}>
         
         <Image 
@@ -60,6 +65,12 @@ export default class Login extends Component{
         <Text style= {styles.textHeader}>Signin Account</Text>
         
        <View style={ styles.inputContainer }>
+               <Image 
+         style={styles.backGroundStyle}
+          source={require('../Constants/Assets/BgPattern.png')}
+        ></Image>
+         
+
         <View style= { {alignContent:'center',justifyContent:'center',alignItems:'center', marginTop:20,marginBottom:20} }>
        <TextInput  style={styles.input}
 
@@ -88,12 +99,19 @@ export default class Login extends Component{
        Login
 
         </Button>
-      <Button>
-        <Text style={styles.registerText} onPress={() => this.props.navigation.navigate('Register')} 
-        >New here? SignUp
+
+      <View style={styles.linkContainer}>
+        <Text style={styles.registerText} 
+        >New here? 
          </Text>
-       
-       </Button>
+
+       <Button> 
+        <Text style={styles.registerLink}
+          onPress={() => this.props.navigation.navigate('Register')} 
+        > SignUp
+         </Text>
+         </Button>
+       </View>
        
        </View>
      </View>
@@ -122,7 +140,7 @@ const styles = StyleSheet.create({
  textHeader:{
   flex:1 / 2,
   fontFamily: 'sans serif',
-  fontSize:28,
+  fontSize:20,
   fontWeight: 'normal',
   marginTop: 5,
   color: theme.color.black,
@@ -166,20 +184,19 @@ const styles = StyleSheet.create({
    fontWeight:'normal',
    borderRadius:15,
    padding: 10,
-   marginLeft: 30,
+   marginHorizontal: 20,
    marginBottom: 10
 
 
  },
+
  registerText:{
-   alignItems:'center',
+  
    color: theme.color.greyDarker,
-   fontSize: 18,
-   fontWeight:'normal',
-   backgroundColor:'transparent'
+  
  },
 
-   logoContainer:{
+  logoContainer:{
       
        alignContent:'center',
        alignItems: 'center',
@@ -189,10 +206,33 @@ const styles = StyleSheet.create({
 
    logoStyle:{
 
-    width:Dimensions.get('window').width /7,
+    width:Dimensions.get('window').width /6,
     height:Dimensions.get('window').height /7,
-    backgroundColor: 'transparent'
+    backgroundColor: 'transparent',
+    paddingHorizontal: 10,
 
-   }
+
+   },
+    backGroundStyle: {
+     position: 'absolute',
+        top: 0,
+        left: 0,
+        bottom: 0,
+        right: 0,
+        opacity: 0.1
+   },
+   registerLink:{
+    fontWeight:'bold',
+   color: '#FECE21' 
+  
+ },
+
+ linkContainer:{
+  flexDirection:'row',
+  alignItems:'center',
+   fontSize: 20,
+   fontWeight:'400',
+   backgroundColor:'transparent'
+ }
 });
 

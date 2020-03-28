@@ -24,14 +24,28 @@ export default class Splash extends Component{
         return(
         
       <View  style= {styles.container}>
-           
-       
-       <View style={styles.logoContainer}>
         
+           <Image 
+            style={styles.backGroundStyle}
+            source={require('../Constants/Assets/BgPattern.png')}
+           ></Image>  
+       
+         
+        <Image 
+          style={styles.roadMapStyle}
+          source={require('../Constants/Assets/roadmap.png')}
+        ></Image>  
+       
+
+       <View style={styles.logoContainer}>
+          
+       
         <Image 
          style={styles.logoStyle}
           source={require('../Constants/Assets/logo.png')}
         ></Image>
+
+
 
         </View>
        
@@ -66,12 +80,10 @@ textHeader:
 {
     
     fontFamily: 'sans serif',
-    fontSize:35,
+    fontSize:30,
     fontWeight: 'normal',
-    marginTop: 10,
     color: 'black',
-    marginBottom: 20,
-    padding:10
+    
    },
 
    logoContainer:{
@@ -83,9 +95,30 @@ textHeader:
 
    logoStyle:{
 
-    width:Dimensions.get('window').width /7,
+    width:Dimensions.get('window').width /6,
     height:Dimensions.get('window').height /7,
-    backgroundColor: 'transparent'
+    backgroundColor: 'transparent',
+    paddingHorizontal: 10,
+    marginTop: 40
+
+   },
+   backGroundStyle: {
+     position: 'absolute',
+        top: 0,
+        left: 0,
+        bottom: 0,
+        right: 0,
+        opacity: 0.1
+   },
+   roadMapStyle:{
+        position: 'absolute',
+        backgroundColor:'transparent',
+        width:Dimensions.get('window').width,
+        height:Dimensions.get('window').height /7,
+        alignItems:'center',
+        justifyContent:'center',
+        alignContent:'center'
+
 
    }
  });

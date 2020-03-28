@@ -46,6 +46,10 @@ ShowDestination =(text)=>{
 
               
               <View style={{backgroundColor: theme.color.offWhite, flex:1, alignItems: 'center',justifyContent: 'center',alignContent:'center'}}>
+                  <Image 
+         style={styles.backGroundStyle}
+          source={require('../Constants/Assets/BgPattern.png')}
+        ></Image>
         
              <View>
 
@@ -207,5 +211,14 @@ const styles = StyleSheet.create({
   	alignItems:'center',
   	justifyContent:'center'
   },
+
+  backGroundStyle: {
+     position: 'absolute',
+        top: 0,
+        left: 0,
+        bottom: 0,
+        right: 0,
+        opacity: 0.1
+   }
 
 });

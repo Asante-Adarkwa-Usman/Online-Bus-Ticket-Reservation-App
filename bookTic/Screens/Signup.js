@@ -32,6 +32,11 @@ export default class Signup extends Component {
           <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <View  style= {styles.container}>
 
+            <Image 
+         style={styles.backGroundStyle}
+          source={require('../Constants/Assets/BgPattern.png')}
+        ></Image>
+
             <View style={styles.logoContainer}>
         
         <Image 
@@ -46,6 +51,16 @@ export default class Signup extends Component {
       
         
        <View style={ styles.inputContainer }>
+            <Image 
+         style={styles.backGroundStyle}
+          source={require('../Constants/Assets/BgPattern.png')}
+        ></Image>
+
+          <Image 
+          style={styles.roadMapStyle}
+          source={require('../Constants/Assets/roadmap.png')}
+        ></Image>  
+       
           
         <View style= { {alignContent:'center',justifyContent:'center',alignItems:'center',margin:20} }>
      
@@ -88,14 +103,18 @@ export default class Signup extends Component {
 
         </Button>
 
-      
-      <TouchableOpacity>
+       <View style={styles.linkContainer}>
         <Text style={styles.registerText} 
-        onPress={ () => this.props.navigation.navigate('Welcome')} 
-        >signup already? login
+        >Signup already? 
          </Text>
-       
-       </TouchableOpacity>
+
+       <Button> 
+        <Text style={styles.registerLink}
+          onPress={() => this.props.navigation.navigate('Welcome')} 
+        > Login 
+         </Text>
+         </Button>
+       </View>
        
        </View>
      </View>
@@ -128,7 +147,7 @@ const styles = StyleSheet.create({
   textHeader:{
    flex:1 ,
    fontFamily: 'sans serif',
-   fontSize:28,
+   fontSize:20,
    fontWeight: 'normal',
    marginTop: 5,
    color: theme.color.black,
@@ -139,7 +158,7 @@ const styles = StyleSheet.create({
   },
 
   inputContainer:{
-   flex:1 + 2.5,
+   flex:1 + 5,
    flexDirection:'column',
    width: Dimensions.get('window').width,
    height: 150, 
@@ -176,16 +195,19 @@ const styles = StyleSheet.create({
     borderRadius:15,
     padding: 10,
     marginTop:10,
-    marginLeft: 30,
+    marginHorizontal: 20,
     marginBottom: 10
  
   },
   registerText:{
-    alignItems:'center',
+  
     color: theme.color.greyDarker,
-    fontSize: 18,
-    fontWeight:'normal',
-    backgroundColor:'transparent'
+
+  },
+
+  registerLink:{
+    color:'#FECE21',
+    fontWeight:'bold'
   },
 
    logoContainer:{
@@ -198,9 +220,36 @@ const styles = StyleSheet.create({
 
    logoStyle:{
 
-    width:Dimensions.get('window').width /7,
+   width:Dimensions.get('window').width /6,
     height:Dimensions.get('window').height /7,
-    backgroundColor: 'transparent'
+    backgroundColor: 'transparent',
+    paddingHorizontal: 10,
+
+   },
+    backGroundStyle: {
+     position: 'absolute',
+        top: 0,
+        left: 0,
+        bottom: 0,
+        right: 0,
+        opacity: 0.1
+   },
+   linkContainer:{
+  flexDirection:'row',
+  alignItems:'center',
+   fontSize: 20,
+   fontWeight:'400',
+   backgroundColor:'transparent'
+ },
+ roadMapStyle:{
+        position: 'absolute',
+        backgroundColor:'transparent',
+        width:Dimensions.get('window').width,
+        height:Dimensions.get('window').height /7,
+        alignItems:'center',
+        justifyContent:'center',
+        alignContent:'center'
+
 
    }
  });
