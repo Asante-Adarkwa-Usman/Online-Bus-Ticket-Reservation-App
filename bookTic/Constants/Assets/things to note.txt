@@ -1,0 +1,5 @@
+Colour Code 1	---->	fdce20
+Colour Code 2	---->	303030
+Colour Code 3	---->	e5e5e5
+Font for logo	---->	Comfortaa
+Font for UI	---->	Ubuntu

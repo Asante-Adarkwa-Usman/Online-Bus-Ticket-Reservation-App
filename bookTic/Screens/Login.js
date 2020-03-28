@@ -47,6 +47,15 @@ export default class Login extends Component{
 
      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <View  style= {styles.container}>
+
+            <View style={styles.logoContainer}>
+        
+        <Image 
+         style={styles.logoStyle}
+          source={require('../Constants/Assets/logo.png')}
+        ></Image>
+
+        </View>
        
         <Text style= {styles.textHeader}>Signin Account</Text>
         
@@ -104,8 +113,6 @@ const styles = StyleSheet.create({
    flexDirection:'column',
    alignItems: 'center',
    backgroundColor: '#FECE21',
-  //  borderTopLeftRadius:20,
-  //  borderTopRightRadius: 20,
    borderRightColor:theme.color.orange,
    borderLeftColor:theme.color.orange,
    
@@ -116,12 +123,13 @@ const styles = StyleSheet.create({
   fontFamily:'cursive',
   fontSize:27,
   fontWeight: 'bold',
-  marginTop: 30,
+  marginTop: 5,
   color: theme.color.black,
-  marginBottom: 40
+  marginBottom: 5,
+  alignItems:'center'
  },
  inputContainer:{
-  flex:1,
+  flex:1 + 1.5,
    flexDirection:'column',
    marginTop:10,
    width: Dimensions.get('window').width,
@@ -168,6 +176,22 @@ const styles = StyleSheet.create({
    fontSize: 18,
    fontWeight:'normal',
    backgroundColor:'transparent'
- }
+ },
+
+   logoContainer:{
+      
+       alignContent:'center',
+       alignItems: 'center',
+       justifyContent:'center',
+       marginTop: 30
+   },
+
+   logoStyle:{
+
+    width:Dimensions.get('window').width /7,
+    height:Dimensions.get('window').height /7,
+    backgroundColor: 'transparent'
+
+   }
 });
 

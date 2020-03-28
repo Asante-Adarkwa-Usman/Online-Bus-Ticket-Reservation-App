@@ -24,19 +24,22 @@ export default class Splash extends Component{
         return(
         
       <View  style= {styles.container}>
+           
        
-        <Text style= {styles.textHeader}>Book a Ticket</Text>
-        <View style={styles.imageContainer}>
+       <View style={styles.logoContainer}>
         
         <Image 
-         style={styles.imageStyle}
-          source={require('../Constants/Images/10860.jpg')}
+         style={styles.logoStyle}
+          source={require('../Constants/Assets/logo.png')}
         ></Image>
-        
-        
+
         </View>
-        
-     
+       
+        <Text 
+          style= {styles.textHeader}>
+          bookTic
+        </Text>
+       
        </View>
         );
     }
@@ -44,7 +47,8 @@ export default class Splash extends Component{
 
 
 const styles = StyleSheet.create({
-  container: {
+  container:
+   {
     flex: 1,
     alignContent:'center',
     justifyContent:'center',
@@ -53,29 +57,35 @@ const styles = StyleSheet.create({
     backgroundColor: '#FECE21',
     borderRightColor:theme.color.orange,
     borderLeftColor:theme.color.orange,
-    //borderBottomLeftRadius: 500,
+    
 
   },
 
-textHeader:{
-  
+textHeader:
+{
+    
     fontFamily:'cursive',
     fontSize:35,
     fontWeight: 'bold',
-    marginTop: 30,
-    color: '#F8F8F7',
-    marginBottom: 40,
+    marginTop: 10,
+    color: 'black',
+    marginBottom: 20,
     padding:10
    },
-   imageContainer:{
+
+   logoContainer:{
       
        alignContent:'center',
        alignItems: 'center',
        justifyContent:'center'
    },
-   imageStyle:{
-    width:Dimensions.get('window').width /5 ,
-    height:Dimensions.get('window').height /5
+
+   logoStyle:{
+
+    width:Dimensions.get('window').width /7,
+    height:Dimensions.get('window').height /7,
+    backgroundColor: 'transparent'
+
    }
  });
  

@@ -31,6 +31,15 @@ export default class Signup extends Component {
         return(
           <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <View  style= {styles.container}>
+
+            <View style={styles.logoContainer}>
+        
+        <Image 
+         style={styles.logoStyle}
+          source={require('../Constants/Assets/logo.png')}
+        ></Image>
+
+        </View>
        
         <Text style= {styles.textHeader}>Register</Text>
          
@@ -120,14 +129,16 @@ const styles = StyleSheet.create({
    fontFamily:'cursive',
    fontSize:35,
    fontWeight: 'bold',
-   marginTop: 30,
+   marginTop: 5,
    color: theme.color.black,
-   marginBottom: 20,
-   padding:10
+   marginBottom: 10,
+   alignItems:'center',
+   paddingBottom:10
+
   },
 
   inputContainer:{
-   flex:1 + 2,
+   flex:1 + 2.5,
    flexDirection:'column',
    width: Dimensions.get('window').width,
    height: 150, 
@@ -174,6 +185,22 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight:'normal',
     backgroundColor:'transparent'
-  }
+  },
+
+   logoContainer:{
+      
+       alignContent:'center',
+       alignItems: 'center',
+       justifyContent:'center',
+       marginTop: 30
+   },
+
+   logoStyle:{
+
+    width:Dimensions.get('window').width /7,
+    height:Dimensions.get('window').height /7,
+    backgroundColor: 'transparent'
+
+   }
  });
  
