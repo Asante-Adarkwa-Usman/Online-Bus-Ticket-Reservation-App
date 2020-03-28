@@ -113,6 +113,7 @@ export default class Signup extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    fontFamily: 'sans serif',
     alignContent:'center',
     justifyContent:'center',
     flexDirection:'column',
@@ -126,9 +127,9 @@ const styles = StyleSheet.create({
   },
   textHeader:{
    flex:1 ,
-   fontFamily:'cursive',
-   fontSize:35,
-   fontWeight: 'bold',
+   fontFamily: 'sans serif',
+   fontSize:28,
+   fontWeight: 'normal',
    marginTop: 5,
    color: theme.color.black,
    marginBottom: 10,
@@ -145,8 +146,8 @@ const styles = StyleSheet.create({
    backgroundColor: theme.color.offWhite,
    alignItems:'center',
    borderBottomColor:theme.color.orange ,
-   borderTopLeftRadius: 20,
-   borderTopRightRadius: 20,
+   borderTopLeftRadius: 10,
+   borderTopRightRadius: 10,
    
 
   },

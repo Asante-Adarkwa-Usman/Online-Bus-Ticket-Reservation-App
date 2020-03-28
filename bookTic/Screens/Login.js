@@ -108,6 +108,7 @@ export default class Login extends Component{
 const styles = StyleSheet.create({
  container: {
    flex: 1,
+   fontFamily: 'sans serif',
    alignContent:'center',
    justifyContent:'center',
    flexDirection:'column',
@@ -120,9 +121,9 @@ const styles = StyleSheet.create({
  },
  textHeader:{
   flex:1 / 2,
-  fontFamily:'cursive',
-  fontSize:27,
-  fontWeight: 'bold',
+  fontFamily: 'sans serif',
+  fontSize:28,
+  fontWeight: 'normal',
   marginTop: 5,
   color: theme.color.black,
   marginBottom: 5,
@@ -136,8 +137,8 @@ const styles = StyleSheet.create({
    height: 150, 
   backgroundColor: theme.color.offWhite,
   alignItems:'center',
-  borderTopLeftRadius: 20,
-  borderTopRightRadius: 20,
+  borderTopLeftRadius: 10,
+  borderTopRightRadius: 10,
   borderBottomColor:theme.color.orange 
  },
  input:{

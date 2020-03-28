@@ -141,6 +141,7 @@ ShowDestination =(text)=>{
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    fontFamily: 'sans serif',
     alignContent:'center',
     justifyContent:'center',
     flexDirection:'column',

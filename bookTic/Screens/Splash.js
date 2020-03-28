@@ -57,6 +57,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#FECE21',
     borderRightColor:theme.color.orange,
     borderLeftColor:theme.color.orange,
+    fontFamily: 'sans serif'
     
 
   },
@@ -64,9 +65,9 @@ const styles = StyleSheet.create({
 textHeader:
 {
     
-    fontFamily:'cursive',
+    fontFamily: 'sans serif',
     fontSize:35,
-    fontWeight: 'bold',
+    fontWeight: 'normal',
     marginTop: 10,
     color: 'black',
     marginBottom: 20,

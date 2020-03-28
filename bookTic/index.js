@@ -25,7 +25,8 @@ import Location from './Screens/Location';
  
 
 render() {
-
+   
+    //show Splash screen else show the app screen or component
 	  const { currentScreen } = this.state
          let mainScreen = currentScreen ==='Splash' ? <Splash /> : <App />
        return mainScreen
