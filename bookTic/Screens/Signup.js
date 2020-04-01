@@ -21,49 +21,46 @@ export default class Signup extends Component {
 
   render(){
 
-   
       let btnSignupPressed = ()=>{
-      
+
         Alert. alert("Account Registeration","signup successful");
       }
-      
-
         return(
           <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <View  style= {styles.container}>
 
-            <Image 
+            <Image
          style={styles.backGroundStyle}
           source={require('../Constants/Assets/BgPattern.png')}
         ></Image>
 
             <View style={styles.logoContainer}>
-        
-        <Image 
+
+        <Image
          style={styles.logoStyle}
           source={require('../Constants/Assets/logo.png')}
         ></Image>
 
         </View>
-       
+
         <Text style= {styles.textHeader}>Register</Text>
-         
-      
-        
+
+
+
        <View style={ styles.inputContainer }>
-            <Image 
+            <Image
          style={styles.backGroundStyle}
           source={require('../Constants/Assets/BgPattern.png')}
         ></Image>
 
-          <Image 
+          <Image
           style={styles.roadMapStyle}
           source={require('../Constants/Assets/roadmap.png')}
-        ></Image>  
-       
-          
+        ></Image>
+
+
         <View style= { {alignContent:'center',justifyContent:'center',alignItems:'center',margin:20} }>
-     
+
        <TextInput  style={styles.input}
 
        placeholder="email"
@@ -71,9 +68,9 @@ export default class Signup extends Component {
        keyboardType='email-address'
        autoCorrect={false}
        returnKeyType= 'next'
-       
 
-       
+
+
        />
 
        <TextInput  style={styles.input}
@@ -83,7 +80,7 @@ export default class Signup extends Component {
        autoCorrect={false}
        secureTextEntry={true}
 
-       
+
        />
 
        <TextInput  style={styles.input}
@@ -93,7 +90,7 @@ export default class Signup extends Component {
        autoCorrect={false}
        secureTextEntry={true}
 
-       
+
        />
 
       <Button style={styles.btnContainer}
@@ -104,26 +101,26 @@ export default class Signup extends Component {
         </Button>
 
        <View style={styles.linkContainer}>
-        <Text style={styles.registerText} 
-        >Signup already? 
+        <Text style={styles.registerText}
+        >Signup already?
          </Text>
 
-       <Button> 
+       <Button>
         <Text style={styles.registerLink}
-          onPress={() => this.props.navigation.navigate('Welcome')} 
-        > Login 
+          onPress={() => this.props.navigation.navigate('Welcome')}
+        > Login
          </Text>
          </Button>
        </View>
-       
+
        </View>
      </View>
-       
+
       </View>
-  
-   </TouchableWithoutFeedback> 
+
+   </TouchableWithoutFeedback>
         );
-    
+
  }
 
 }
@@ -138,11 +135,10 @@ const styles = StyleSheet.create({
     flexDirection:'column',
     alignItems: 'center',
     backgroundColor:'#FECE21' ,
-    borderRightColor:theme.color.orange,
-    borderLeftColor:theme.color.orange,
     
-    
- 
+
+
+
   },
   textHeader:{
    flex:1 ,
@@ -161,13 +157,13 @@ const styles = StyleSheet.create({
    flex:1 + 5,
    flexDirection:'column',
    width: Dimensions.get('window').width,
-   height: 150, 
+   height: 150,
    backgroundColor: theme.color.offWhite,
    alignItems:'center',
    borderBottomColor:theme.color.orange ,
    borderTopLeftRadius: 10,
    borderTopRightRadius: 10,
-   
+
 
   },
   input:{
@@ -180,8 +176,8 @@ const styles = StyleSheet.create({
     fontWeight: 'normal',
     padding: 15,
     marginTop:15,
-    
- 
+
+
   },
   btnContainer:{
     flexDirection: 'row',
@@ -197,10 +193,10 @@ const styles = StyleSheet.create({
     marginTop:10,
     marginHorizontal: 20,
     marginBottom: 10
- 
+
   },
   registerText:{
-  
+
     color: theme.color.greyDarker,
 
   },
@@ -211,7 +207,7 @@ const styles = StyleSheet.create({
   },
 
    logoContainer:{
-      
+
        alignContent:'center',
        alignItems: 'center',
        justifyContent:'center',
@@ -253,4 +249,3 @@ const styles = StyleSheet.create({
 
    }
  });
- 

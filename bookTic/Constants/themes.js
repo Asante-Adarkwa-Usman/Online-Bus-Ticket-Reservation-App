@@ -2,12 +2,13 @@
 
 /* eslint-disable prettier/prettier */
 const color = {
-  
+
     black: '#212121',
 
     textColor:'#83828f',
     orange: '#FF9524',
-   
+    appColor: '#FECE21',
+
     greyDarkest: '#242424',
     greyDarker: '#616161',
     greyDark: '#757575',
@@ -15,11 +16,11 @@ const color = {
     greyLight: '#bdbdbd',
     greyLighter: '#e0e0e0',
     greyLightest: '#eeeeee',
-   
+
     white: '#fff',
     offWhite: '#e9e9ee',
     btnColor: '#73a2a4',
-   
+
     redDarkest: '#b71c1c',
     redDarker: '#c62828',
     redDark: '#d32f2f',
@@ -27,7 +28,7 @@ const color = {
     redLight: '#ef5350',
     redLighter: '#e57373',
     redLightest: '#ef9a9a',
-   
+
     blueDarkest: '#0d47a1',
     blueDarker: '#1565c0',
     blueDark: '#1976d2',
@@ -42,7 +43,7 @@ const color = {
     purpleLight: '#ab47bc',
     purpleLighter: '#ba68c8',
     purpleLightest: '#ce93d8',
-   
+
     greenDarkest: '#1b5e20',
     greenDarker: '#2e7d32',
     greenDark: '#388e3c',
@@ -52,7 +53,7 @@ const color = {
     greenLightest: '#a5d6a7',
   };
 
-   
+
 export const theme = {
     text: {
       size: {
@@ -144,5 +145,3 @@ export const theme = {
       },
   },
   };
-
-  

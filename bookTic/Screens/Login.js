@@ -19,57 +19,58 @@ import Signup from '../Screens/Signup';
 import Location from '../Screens/Location';
 
 
+
 export default class Login extends Component{
 
    render(){
 
-  
+
    let _onPressLogin = () =>{
       Alert.alert("Account","login successful");
 
       if(Alert){
          setTimeout(()=> {
-      
+
        this.props.navigation.navigate('location');
       }, 1000);
 
-     
-     
+
+
       }else{
         (error) => console.log(error);
-        
+
       }
     }
-   
-    
-    
+
+
+
     return(
 
      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <View  style= {styles.container}>
 
-             <Image 
+             <Image
          style={styles.backGroundStyle}
           source={require('../Constants/Assets/BgPattern.png')}
-        ></Image> 
+        ></Image>
 
             <View style={styles.logoContainer}>
-        
-        <Image 
+
+        <Image
          style={styles.logoStyle}
           source={require('../Constants/Assets/logo.png')}
         ></Image>
 
         </View>
-       
+
         <Text style= {styles.textHeader}>Signin Account</Text>
-        
+
        <View style={ styles.inputContainer }>
-               <Image 
+               <Image
          style={styles.backGroundStyle}
           source={require('../Constants/Assets/BgPattern.png')}
         ></Image>
-         
+
 
         <View style= { {alignContent:'center',justifyContent:'center',alignItems:'center', marginTop:20,marginBottom:20} }>
        <TextInput  style={styles.input}
@@ -79,9 +80,9 @@ export default class Login extends Component{
        keyboardType='email-address'
        autoCorrect={false}
        returnKeyType= 'next'
-       
 
-       
+
+
        />
 
        <TextInput  style={styles.input}
@@ -91,7 +92,7 @@ export default class Login extends Component{
        autoCorrect={false}
        secureTextEntry={true}
 
-       
+
        />
       <Button style={styles.btnContainer}
        onPress= {_onPressLogin}
@@ -101,24 +102,24 @@ export default class Login extends Component{
         </Button>
 
       <View style={styles.linkContainer}>
-        <Text style={styles.registerText} 
-        >New here? 
+        <Text style={styles.registerText}
+        >New here?
          </Text>
 
-       <Button> 
+       <Button>
         <Text style={styles.registerLink}
-          onPress={() => this.props.navigation.navigate('Register')} 
+          onPress={() => this.props.navigation.navigate('Register')}
         > SignUp
          </Text>
          </Button>
        </View>
-       
+
        </View>
      </View>
-       
+
       </View>
-   </TouchableWithoutFeedback> 
- 
+   </TouchableWithoutFeedback>
+
     );
   }
 }
@@ -134,7 +135,7 @@ const styles = StyleSheet.create({
    backgroundColor: '#FECE21',
    borderRightColor:theme.color.orange,
    borderLeftColor:theme.color.orange,
-   
+
 
  },
  textHeader:{
@@ -152,12 +153,12 @@ const styles = StyleSheet.create({
    flexDirection:'column',
    marginTop:10,
    width: Dimensions.get('window').width,
-   height: 150, 
+   height: 150,
   backgroundColor: theme.color.offWhite,
   alignItems:'center',
   borderTopLeftRadius: 10,
   borderTopRightRadius: 10,
-  borderBottomColor:theme.color.orange 
+  borderBottomColor:theme.color.orange
  },
  input:{
    borderRadius:15,
@@ -170,7 +171,7 @@ const styles = StyleSheet.create({
    fontWeight: 'normal',
    padding: 15,
    marginTop: 10,
-   
+
 
  },
  btnContainer:{
@@ -191,13 +192,13 @@ const styles = StyleSheet.create({
  },
 
  registerText:{
-  
+
    color: theme.color.greyDarker,
-  
+
  },
 
   logoContainer:{
-      
+
        alignContent:'center',
        alignItems: 'center',
        justifyContent:'center',
@@ -223,8 +224,8 @@ const styles = StyleSheet.create({
    },
    registerLink:{
     fontWeight:'bold',
-   color: '#FECE21' 
-  
+   color: '#FECE21'
+
  },
 
  linkContainer:{
@@ -235,4 +236,3 @@ const styles = StyleSheet.create({
    backgroundColor:'transparent'
  }
 });
-
