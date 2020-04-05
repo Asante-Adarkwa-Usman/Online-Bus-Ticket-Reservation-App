@@ -1,4 +1,4 @@
- import 'react-native-gesture-handler';
+import 'react-native-gesture-handler';
 import React, { Component } from 'react';
 import {AppRegistry} from 'react-native';
 import App from './App';

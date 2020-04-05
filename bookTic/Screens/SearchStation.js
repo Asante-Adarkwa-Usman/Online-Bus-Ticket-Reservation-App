@@ -15,6 +15,8 @@ import { theme } from '../Constants/themes';
 import Button from 'react-native-button';
 
 import MapView from 'react-native-maps';
+import { Marker } from 'react-native-maps';
+import Geolocation from '@react-native-community/geolocation';
 
 
 const {width, height} = Dimensions.get('window')
@@ -37,18 +39,23 @@ constructor(props){
        latitudeDelta: 0,
        longitudeDelta: 0,
 
-      }
+     },
+     markerPosition:{
+       latitude: 0,
+       longitude: 0
+     }
+
     }
  }
 
  watchID: ?number = null
 
  componentDidMount() {
-   navigator.geolocation.getCurrentPosition( (position)=>{
-     let lat = parseFloat(position.coords.latitude)
-     let long = parseFloat(position.coords.longitude)
+   navigator.geolocation.getCurrentPosition((position)=>{
+     var lat = parseFloat(position.coords.latitude)
+     var long = parseFloat(position.coords.longitude)
 
-     let initialRegion = {
+     var initialRegion = {
        latitude: lat,
        longitude: long,
        latitudeDelta: LATITUDE_DELTA,
@@ -57,15 +64,19 @@ constructor(props){
      }
 
      this.setState({initialPosition: initialRegion})
+     this.setState({markerPosition: initialRegion})
 
-   },(error) =>alert(JSON.stringify(error)),
-   {enableHighAccuracy: true, timeout: 20000, minimumAge: 1000})
+   },
+   (error) => alert(JSON.stringify(error)),
 
-   this.watchID = navigator.geolocation.watchPosition( (position)=>{
-     let lat = parseFloat(position.coords.latitude)
-     let long = parseFloat(position.coords.longitude)
+  // {enableHighAccuracy: true, timeout: 40000, minimumAge: 1000},
+ );
 
-     let lastRegion = {
+   this.watchID = navigator.geolocation.watchPosition((position)=>{
+     var lat = parseFloat(position.coords.latitude)
+     var long = parseFloat(position.coords.longitude)
+
+     var lastRegion = {
        latitude: lat,
        longitude: long,
        latitudeDelta: LATITUDE_DELTA,
@@ -74,11 +85,10 @@ constructor(props){
      }
 
       this.setState({initialPosition: lastRegion})
+       this.setState({markerPosition: lastRegion})
 
 
       })
-   )
-
  }
 
 
@@ -97,10 +107,16 @@ constructor(props){
          <MapView
 
          style={styles.mapStyle}
-         initialRegion={this.state.initialPosition}
+         region={this.state.initialPosition}>
 
- />
-     <View>
+            < Marker
+              coordinate={this.state.markerPosition}
+              title={"My Location"}
+              >
+            </ Marker>
+
+      </MapView>
+      <View>
        <TouchableOpacity
        activeOpacity={0.7}
        onPress={ () => {

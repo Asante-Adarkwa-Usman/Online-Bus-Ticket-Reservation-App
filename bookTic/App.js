@@ -1,4 +1,4 @@
-
+navigator.geolocation = require('@react-native-community/geolocation');
 import React, { Component } from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
@@ -29,12 +29,12 @@ export default class App extends Component{
             	headerShown: true ,
             	headerStyle: {backgroundColor:"#FECE21"}
              }} />
-             <Stack.Screen  name= "Bus stations" component={SearchStation}
+             <Stack.Screen  name= "current location" component={SearchStation}
 						   options={{
             	 headerShown: true,
             	 headerStyle: {backgroundColor:"#FECE21"}
              }} />
-						 
+
 
 
           </Stack.Navigator>

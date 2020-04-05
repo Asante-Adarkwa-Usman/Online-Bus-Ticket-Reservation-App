@@ -214,7 +214,7 @@ export default class Location extends Component {
         styles.btnContainer
       }
       onPress = {
-        () => this.props.navigation.navigate('Bus stations')
+        () => this.props.navigation.navigate('current location')
       } >
       Done < /Button>
 
