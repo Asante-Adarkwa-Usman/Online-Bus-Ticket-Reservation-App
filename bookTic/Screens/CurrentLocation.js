@@ -17,6 +17,7 @@ import Button from 'react-native-button';
 import MapView from 'react-native-maps';
 import { Marker } from 'react-native-maps';
 import Geolocation from '@react-native-community/geolocation';
+import AvailableBusStations from '../Screens/AvailableBusStations';
 
 
 const {width, height} = Dimensions.get('window')
@@ -27,7 +28,7 @@ const ASPECT_RATIO = width / height
 const LATITUDE_DELTA = 0.0922
 const LONGITUDE_DELTA = LATITUDE_DELTA * ASPECT_RATIO
 
-class SearchStation extends Component {
+class CurrentLocation extends Component {
 
 constructor(props){
   super(props);
@@ -111,7 +112,7 @@ constructor(props){
 
             < Marker
               coordinate={this.state.markerPosition}
-              title={"My Location"}
+              title={"My Current Location"}
               >
             </ Marker>
 
@@ -120,7 +121,7 @@ constructor(props){
        <TouchableOpacity
        activeOpacity={0.7}
        onPress={ () => {
-        Alert.alert('Search','A button is pressed');
+        this.props.navigation.navigate('bus stations')
         }
        }
        style={styles.TouchableOpacityStyle}>
@@ -138,7 +139,7 @@ constructor(props){
   }
 }
 
-export default SearchStation;
+export default CurrentLocation;
 
 const styles = StyleSheet.create({
 

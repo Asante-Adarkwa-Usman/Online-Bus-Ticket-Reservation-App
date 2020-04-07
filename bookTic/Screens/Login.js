@@ -17,7 +17,7 @@ import {theme} from '../Constants/themes';
 import Button from 'react-native-button';
 import Signup from '../Screens/Signup';
 import Location from '../Screens/Location';
-
+import { widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
 
 export default class Login extends Component{
@@ -47,6 +47,8 @@ export default class Login extends Component{
     return(
 
      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+     <ScrollView
+     >
       <View  style= {styles.container}>
 
              <Image
@@ -72,7 +74,7 @@ export default class Login extends Component{
         ></Image>
 
 
-        <View style= { {alignContent:'center',justifyContent:'center',alignItems:'center', marginTop:20,marginBottom:20} }>
+        <View style= { {alignContent:'center',justifyContent:'center',alignItems:'center', marginTop:20} }>
        <TextInput  style={styles.input}
 
        placeholder=" email"
@@ -118,6 +120,7 @@ export default class Login extends Component{
      </View>
 
       </View>
+  </ScrollView>
    </TouchableWithoutFeedback>
 
     );
@@ -133,8 +136,7 @@ const styles = StyleSheet.create({
    flexDirection:'column',
    alignItems: 'center',
    backgroundColor: '#FECE21',
-   borderRightColor:theme.color.orange,
-   borderLeftColor:theme.color.orange,
+
 
 
  },
@@ -148,22 +150,23 @@ const styles = StyleSheet.create({
   marginBottom: 5,
   alignItems:'center'
  },
+
  inputContainer:{
-  flex:1 + 1.5,
+  flex:2,
    flexDirection:'column',
-   marginTop:10,
-   width: Dimensions.get('window').width,
-   height: 150,
+   marginTop:20,
+   width: wp('100'),
+   height: hp('70'),
   backgroundColor: theme.color.offWhite,
   alignItems:'center',
   borderTopLeftRadius: 10,
-  borderTopRightRadius: 10,
-  borderBottomColor:theme.color.orange
+  borderTopRightRadius: 10
+
  },
  input:{
    borderRadius:15,
    backgroundColor:theme.color.greyLighter,
-   width:300,
+   width:wp('80'),
    marginHorizontal: 20,
    paddingHorizontal:10,
    marginBottom:10,
@@ -176,7 +179,7 @@ const styles = StyleSheet.create({
  },
  btnContainer:{
    flexDirection: 'row',
-   width: 150,
+   width:wp('40'),
    alignItems:'center',
    height: 45,
    color: theme.color.black,
@@ -207,8 +210,8 @@ const styles = StyleSheet.create({
 
    logoStyle:{
 
-    width:Dimensions.get('window').width /6,
-    height:Dimensions.get('window').height /7,
+    width:wp('20'),
+    height:hp('16'),
     backgroundColor: 'transparent',
     paddingHorizontal: 10,
 

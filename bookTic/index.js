@@ -7,7 +7,8 @@ import Splash from './Screens/Splash';
 import Signup from './Screens/Signup';
 import Login from './Screens/Login';
 import Location from './Screens/Location';
-import SearchStation from './Screens/SearchStation';
+import CurrentLocation from './Screens/CurrentLocation';
+import AvailableBusStations from './Screens/AvailableBusStations';
 
 
  class Main extends Component{

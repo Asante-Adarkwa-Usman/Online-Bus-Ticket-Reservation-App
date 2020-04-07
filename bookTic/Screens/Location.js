@@ -24,7 +24,8 @@ import {
 } from '../Constants/themes';
 
 import Button from 'react-native-button';
-import SearchStation from '../Screens/SearchStation';
+import CurrentLocation from '../Screens/CurrentLocation';
+import { widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
 
 
@@ -62,15 +63,17 @@ export default class Location extends Component {
 
     return (
 
-
-      <
-      View style = {
+    <ScrollView>
+      <View style = {
         {
+
+          width:Dimensions.get('window').width,
+          height:hp('100'),
           backgroundColor: theme.color.offWhite,
-          flex: 1,
           alignItems: 'center',
           justifyContent: 'center',
-          alignContent: 'center'
+          alignContent: 'center',
+
         }
       } >
       <
@@ -226,8 +229,8 @@ export default class Location extends Component {
       /View>
 
 
-      <
-      /View>
+      </View>
+    </ScrollView>
 
 
 
@@ -239,17 +242,7 @@ export default class Location extends Component {
 
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    fontFamily: 'sans serif',
-    alignContent: 'center',
-    justifyContent: 'center',
-    flexDirection: 'column',
-    backgroundColor: '#FECE21',
 
-
-
-  },
   textHeader: {
     fontSize: 20,
     fontWeight: 'bold',
@@ -257,20 +250,9 @@ const styles = StyleSheet.create({
     color: theme.color.black,
     marginLeft: 10
 
+
   },
 
-  inputContainer: {
-    flex: 1,
-    flexDirection: 'column',
-    marginTop: 10,
-    width: Dimensions.get('window').width,
-    height: 150,
-    backgroundColor: 'white',
-    alignItems: 'center',
-    borderTopLeftRadius: 20,
-    borderTopRightRadius: 20,
-    borderBottomColor: theme.color.orange
-  },
   picker: {
 
 
@@ -281,15 +263,17 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     marginHorizontal: 10,
     marginTop: 20,
-    marginBottom: 20
+    marginBottom: 20,
+    alignItems: 'center',
+    justifyContent: 'center',
+    alignContent: 'center'
 
 
   },
   btnContainer: {
     flexDirection: 'row',
-    width: 150,
+    width: wp('40'),
     alignItems: 'center',
-    height: 45,
     color: theme.color.black,
     backgroundColor: '#FECE21',
     fontSize: 18,

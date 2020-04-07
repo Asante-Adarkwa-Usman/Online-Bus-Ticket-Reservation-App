@@ -6,7 +6,8 @@ import Signup from './Screens/Signup';
 import Login from './Screens/Login';
 import Splash from './Screens/Splash';
 import Location from './Screens/Location';
-import SearchStation from './Screens/SearchStation';
+import CurrentLocation from './Screens/CurrentLocation';
+import AvailableBusStations from './Screens/AvailableBusStations';
 
 
 
@@ -29,11 +30,16 @@ export default class App extends Component{
             	headerShown: true ,
             	headerStyle: {backgroundColor:"#FECE21"}
              }} />
-             <Stack.Screen  name= "current location" component={SearchStation}
+             <Stack.Screen  name= "current location" component={CurrentLocation}
 						   options={{
             	 headerShown: true,
             	 headerStyle: {backgroundColor:"#FECE21"}
              }} />
+						 <Stack.Screen  name= "bus stations" component={AvailableBusStations}
+							options={{
+							headerShown: true,
+							headerStyle: {backgroundColor:"#FECE21"}
+						 }} />
 
 
 

@@ -13,6 +13,7 @@ import {
 import {theme} from '../Constants/themes';
 import Button from 'react-native-button';
 import { createStackNavigator } from '@react-navigation/stack';
+import { widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
 import Login from '../Screens/Login';
 
@@ -27,7 +28,8 @@ export default class Signup extends Component {
       }
         return(
           <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-      <View  style= {styles.container}>
+          <ScrollView>
+         <View  style= {styles.container}>
 
             <Image
          style={styles.backGroundStyle}
@@ -59,7 +61,7 @@ export default class Signup extends Component {
         ></Image>
 
 
-        <View style= { {alignContent:'center',justifyContent:'center',alignItems:'center',margin:20} }>
+        <View style= { {alignContent:'center',justifyContent:'center',alignItems:'center',marginTop:20} }>
 
        <TextInput  style={styles.input}
 
@@ -117,7 +119,7 @@ export default class Signup extends Component {
      </View>
 
       </View>
-
+ </ScrollView>
    </TouchableWithoutFeedback>
         );
 
@@ -149,18 +151,17 @@ const styles = StyleSheet.create({
    color: theme.color.black,
    marginBottom: 10,
    alignItems:'center',
-   paddingBottom:10
+   paddingBottom:15
 
   },
 
   inputContainer:{
-   flex:1 + 5,
+   flex:1,
    flexDirection:'column',
-   width: Dimensions.get('window').width,
-   height: 150,
+   width: wp('100'),
+   height: hp('70'),
    backgroundColor: theme.color.offWhite,
    alignItems:'center',
-   borderBottomColor:theme.color.orange ,
    borderTopLeftRadius: 10,
    borderTopRightRadius: 10,
 
@@ -169,7 +170,7 @@ const styles = StyleSheet.create({
   input:{
     borderRadius:15,
     backgroundColor:theme.color.greyLighter,
-    width:300,
+    width: wp('80'),
     marginHorizontal: 20,
     paddingHorizontal:10,
     fontSize: 18,
@@ -181,9 +182,8 @@ const styles = StyleSheet.create({
   },
   btnContainer:{
     flexDirection: 'row',
-    width: 150,
+    width: wp('40'),
     alignItems:'center',
-    height: 45,
     color: theme.color.black,
     backgroundColor:'#FECE21' ,
     fontSize: 18,
@@ -216,8 +216,8 @@ const styles = StyleSheet.create({
 
    logoStyle:{
 
-   width:Dimensions.get('window').width /6,
-    height:Dimensions.get('window').height /7,
+   width:wp('20'),
+    height:hp('16'),
     backgroundColor: 'transparent',
     paddingHorizontal: 10,
 
