@@ -26,38 +26,82 @@ export default class Login extends Component{
 
   constructor(props){
     super(props);
-    this.unsuscriber =null;
+    this.unsubscriber = null;
     this.state={
-      isAutenticated:'',
+      //isLoading: false,
       typedEmail:'',
       typedPassword: '',
       user: null,
     }
   }
 
+
+
+
+ComponentDidMount() {
+  this.unsubscriber = auth().onAuthStateChanged((changedUser) =>{
+    this.setState({
+      user: changedUser
+    });
+  })
+}
+
+ComponentWillUnmount() {
+  if(this.unsubscriber) {
+    this.unsubscriber();
+  }
+}
+
+
+
    render(){
 
+     let _onPressLogin =   () =>{
 
-   let _onPressLogin = () =>{
-      Alert.alert("Account","login successful");
+         this.setState({ isLoading: true });
 
-      if(Alert){
+     if(this.state.typedEmail =="" && this.state.typedPassword ==""  ){
+       Alert.alert("Inputs Error", "Input fields data required");
 
-
-         setTimeout(()=> {
-
-       this.props.navigation.navigate('location');
-      }, 1000);
+     }
 
 
+   else{
 
-      }else{
-        (error) => console.log(error);
 
-      }
+   auth().signInWithEmailAndPassword(this.state.typedEmail, this.state.typedPassword)
+      .then((user) =>{
+          this.setState({user: user});
+
+
+          Alert. alert("Account","Log in successful");
+
+
+
+           if(Alert)
+           {
+           this.props.navigation.navigate('location')
+          }
+
+      }).catch(error => {
+        if (error.code === 'auth/user-not-found') {
+
+          Alert.alert(" Login Error" ,"Wrong Email!");
+          console.log('Wrong Email!');
+        }
+
+        if (error.code === 'auth/wrong-password') {
+
+          Alert.alert(" Login Error" ,"Wrong Password!");
+          console.log('Wrong Password!');
+        }
+
+         console.error(error);
+      });
+
     }
 
-
+   }
 
     return(
 
@@ -119,13 +163,12 @@ export default class Login extends Component{
 
        />
       <Button style={styles.btnContainer}
-       onPress= {_onPressLogin}
+       onPress= { _onPressLogin }
        >
        Login
+     </Button>
 
-        </Button>
-
-      <View style={styles.linkContainer}>
+    <View style={styles.linkContainer}>
         <Text style={styles.registerText}
         >New here?
          </Text>
@@ -147,7 +190,8 @@ export default class Login extends Component{
 
     );
   }
-}
+ }
+
 
 const styles = StyleSheet.create({
  container: {
