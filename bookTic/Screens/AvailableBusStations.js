@@ -30,15 +30,7 @@ class AvailableBusStations extends Component {
   render() {
     return (
       <ScrollView>
-        <View  style= {styles.container}>
 
-                 <Image
-             style={styles.backGroundStyle}
-              source={require('../Constants/Assets/BgPattern.png')}
-            ></Image>
-
-
-          </View>
        </ScrollView>
 
     );
@@ -51,22 +43,8 @@ export default AvailableBusStations;
 const styles = StyleSheet.create({
 
   container: {
-    width: Dimensions.get('window').width,
-    height: hp('100'),
-    fontFamily: 'sans serif',
-    alignContent:'center',
-    justifyContent:'center',
-    flexDirection:'column',
-    alignItems: 'center',
-    backgroundColor: '#FECE21'
+
   },
 
-  backGroundStyle: {
-   position: 'absolute',
-      top: 0,
-      left: 0,
-      bottom: 0,
-      right: 0,
-      opacity: 0.1
- },
+
 });

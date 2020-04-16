@@ -19,8 +19,21 @@ import Signup from '../Screens/Signup';
 import Location from '../Screens/Location';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
+import auth from '@react-native-firebase/auth';
+
 
 export default class Login extends Component{
+
+  constructor(props){
+    super(props);
+    this.unsuscriber =null;
+    this.state={
+      isAutenticated:'',
+      typedEmail:'',
+      typedPassword: '',
+      user: null,
+    }
+  }
 
    render(){
 
@@ -29,6 +42,8 @@ export default class Login extends Component{
       Alert.alert("Account","login successful");
 
       if(Alert){
+
+
          setTimeout(()=> {
 
        this.props.navigation.navigate('location');
@@ -82,8 +97,11 @@ export default class Login extends Component{
        keyboardType='email-address'
        autoCorrect={false}
        returnKeyType= 'next'
-
-
+       onChangeText={
+       (text) =>{
+         this.setState({typedEmail: text});
+       }
+     }
 
        />
 
@@ -93,7 +111,11 @@ export default class Login extends Component{
        placeholderTextColor={theme.color.greyDarker}
        autoCorrect={false}
        secureTextEntry={true}
-
+       onChangeText={
+       (text) =>{
+         this.setState({typedPassword: text});
+       }
+     }
 
        />
       <Button style={styles.btnContainer}

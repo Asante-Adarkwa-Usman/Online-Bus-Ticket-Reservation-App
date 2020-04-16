@@ -17,30 +17,30 @@ import Button from 'react-native-button';
 
 export default class Splash extends Component{
 
-    
+
     render(){
 
-    
+
         return(
-        
+
       <View  style= {styles.container}>
-        
-           <Image 
+
+           <Image
             style={styles.backGroundStyle}
             source={require('../Constants/Assets/BgPattern.png')}
-           ></Image>  
-       
-         
-        <Image 
+           ></Image>
+
+
+        <Image
           style={styles.roadMapStyle}
           source={require('../Constants/Assets/roadmap.png')}
-        ></Image>  
-       
+        ></Image>
+
 
        <View style={styles.logoContainer}>
-          
-       
-        <Image 
+
+
+        <Image
          style={styles.logoStyle}
           source={require('../Constants/Assets/logo.png')}
         ></Image>
@@ -48,12 +48,12 @@ export default class Splash extends Component{
 
 
         </View>
-       
-        <Text 
+
+        <Text
           style= {styles.textHeader}>
           bookTic
         </Text>
-       
+
        </View>
         );
     }
@@ -72,22 +72,22 @@ const styles = StyleSheet.create({
     borderRightColor:theme.color.orange,
     borderLeftColor:theme.color.orange,
     fontFamily: 'sans serif'
-    
+
 
   },
 
 textHeader:
 {
-    
+
     fontFamily: 'sans serif',
     fontSize:30,
     fontWeight: 'normal',
     color: 'black',
-    
+
    },
 
    logoContainer:{
-      
+
        alignContent:'center',
        alignItems: 'center',
        justifyContent:'center'
@@ -122,4 +122,3 @@ textHeader:
 
    }
  });
- 

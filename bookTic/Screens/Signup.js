@@ -1,4 +1,5 @@
 /* eslint-disable prettier/prettier */
+
 import React, { Component } from 'react';
 import {
   SafeAreaView,
@@ -17,14 +18,62 @@ import { widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-nati
 
 import Login from '../Screens/Login';
 
+import auth from '@react-native-firebase/auth';
+
 
 export default class Signup extends Component {
+
+  constructor(props){
+        super(props);
+        this.unsuscriber =null;
+        this.state={
+              isAutenticated:'',
+              typedEmail:'',
+              typedPassword: '',
+              typedConPassword:'',
+              user: null,
+        }
+  }
+
+
 
   render(){
 
       let btnSignupPressed = ()=>{
+           if(this.state.typedEmail =="" && this.state.typedPassword =="" && this.state.typedConPassword =="" ){
+             Alert.alert("Inputs Required", "Input fields data required");
+           }else if(this.state.typedPassword != this.state.typedConPassword){
+             Alert.alert("Password Mismatch", "The password you entered does not match");
 
-        Alert. alert("Account Registeration","signup successful");
+           }else if (this.state.typedPassword.lenght < 8 && this.state.typedConPassword.lenght < 8) {
+              Alert.alert("password", "password lenght should be at least 8 characters");
+           }
+
+           else{
+
+        auth().createUserWithEmailAndPassword(this.state.typedEmail, this.state.typedPassword)
+            .then((user) =>{
+                this.setState({user: user});
+              
+                Alert. alert("Account Registeration","signup successful");
+                if(Alert){this.props.navigation.navigate('Welcome')}
+
+            }).catch(error => {
+                  if (error.code === 'auth/email-already-in-use') {
+
+                    Alert.alert("Signup Error" ,"The email address is already in use!");
+                    console.log('The email address is already in use!');
+                  }
+
+                  if (error.code === 'auth/invalid-email') {
+
+                    Alert.alert("Signup Error","The email address is invalid!");
+                    console.log('The email address is invalid!');
+                  }
+
+                  console.error(error);
+            });
+      }
       }
         return(
           <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
@@ -70,6 +119,12 @@ export default class Signup extends Component {
        keyboardType='email-address'
        autoCorrect={false}
        returnKeyType= 'next'
+       clearButtonMode="always"
+       onChangeText={
+       (text) =>{
+         this.setState({typedEmail: text});
+        }
+      }
 
 
 
@@ -81,7 +136,12 @@ export default class Signup extends Component {
        placeholderTextColor={theme.color.greyDarker}
        autoCorrect={false}
        secureTextEntry={true}
-
+       clearButtonMode="always"
+       onChangeText={
+       (text) =>{
+         this.setState({typedPassword: text});
+       }
+     }
 
        />
 
@@ -91,6 +151,12 @@ export default class Signup extends Component {
        placeholderTextColor={theme.color.greyDarker}
        autoCorrect={false}
        secureTextEntry={true}
+       clearButtonMode="always"
+       onChangeText={
+       (text) =>{
+         this.setState({typedConPassword: text});
+        }
+      }
 
 
        />
