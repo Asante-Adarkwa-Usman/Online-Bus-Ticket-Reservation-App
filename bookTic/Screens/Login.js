@@ -8,7 +8,7 @@ import {
   View,Image,Keyboard,
   Text,Dimensions,TouchableHighlight,
   StatusBar,TouchableWithoutFeedback,
-  TextInput,KeyboardAvoidingView, Alert,
+  TextInput,KeyboardAvoidingView, Alert,ActivityIndicator
 } from 'react-native';
 
 
@@ -28,7 +28,7 @@ export default class Login extends Component{
     super(props);
     this.unsubscriber = null;
     this.state={
-      //isLoading: false,
+      isLoading: false,
       typedEmail:'',
       typedPassword: '',
       user: null,
@@ -38,15 +38,16 @@ export default class Login extends Component{
 
 
 
-ComponentDidMount() {
+componentDidMount() {
   this.unsubscriber = auth().onAuthStateChanged((changedUser) =>{
     this.setState({
-      user: changedUser
+      user: changedUser,
+      isLoading: false
     });
   })
 }
 
-ComponentWillUnmount() {
+componentWillUnmount() {
   if(this.unsubscriber) {
     this.unsubscriber();
   }
@@ -58,50 +59,60 @@ ComponentWillUnmount() {
 
      let _onPressLogin =   () =>{
 
-         this.setState({ isLoading: true });
 
-     if(this.state.typedEmail =="" && this.state.typedPassword ==""  ){
-       Alert.alert("Inputs Error", "Input fields data required");
 
-     }
+
+     if(this.state.typedEmail == ""){
+        Alert.alert("Inputs Error", "Email field data required");
+     }else if( this.state.typedPassword==""){
+         Alert.alert("Inputs Error", "Password field data required");
+      }
 
 
    else{
 
+      this.setState({ isLoading: true });
+       auth().signInWithEmailAndPassword(this.state.typedEmail, this.state.typedPassword)
+          .then((user) =>{
 
-   auth().signInWithEmailAndPassword(this.state.typedEmail, this.state.typedPassword)
-      .then((user) =>{
-          this.setState({user: user});
+              this.setState({user: user});
+
+              Alert.alert("Account","Log in successful");
+               this.setState({ isLoading: false });
+               if(Alert)
+               {
+               this.props.navigation.navigate('location');
+              }
 
 
-          Alert. alert("Account","Log in successful");
+          }).catch(error => {
+                if (error.code === 'auth/user-not-found') {
 
+                  Alert.alert(" Login Error" ,"Wrong Email!");
+                   this.setState({ isLoading: false });
+                  console.log('Wrong Email!');
+                }
 
+                if (error.code === 'auth/wrong-password') {
 
-           if(Alert)
-           {
-           this.props.navigation.navigate('location')
-          }
+                  Alert.alert(" Login Error" ,"Wrong Password!");
+                   this.setState({ isLoading: false });
+                  console.log('Wrong Password!');
+                }
 
-      }).catch(error => {
-        if (error.code === 'auth/user-not-found') {
+                if (error.code === 'auth/unknown') {
 
-          Alert.alert(" Login Error" ,"Wrong Email!");
-          console.log('Wrong Email!');
-        }
-
-        if (error.code === 'auth/wrong-password') {
-
-          Alert.alert(" Login Error" ,"Wrong Password!");
-          console.log('Wrong Password!');
-        }
+                  Alert.alert(" Login Error" ,"No Connection!");
+                   this.setState({ isLoading: false });
+                  console.log('No Connection!');
+                }
 
          console.error(error);
-      });
+        });
+
+      }
 
     }
-
-   }
 
     return(
 
@@ -167,6 +178,12 @@ ComponentWillUnmount() {
        >
        Login
      </Button>
+
+     <View>
+     <ActivityIndicator animating={this.state.isLoading} size="large"
+           color="#FECE21" />
+      </View>
+
 
     <View style={styles.linkContainer}>
         <Text style={styles.registerText}

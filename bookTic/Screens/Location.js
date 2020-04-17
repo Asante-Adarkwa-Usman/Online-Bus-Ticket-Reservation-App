@@ -36,29 +36,39 @@ export default class Location extends Component {
     super();
     this.state = {
       selectedLabelCurrent: '',
-      selectedLabelDestination: ''
-
+      selectedLabelDestination: '',
+        isLoading: false,
 
     }
   }
 
+
+
+
   ShowCurrent = (value) => {
-    this.setState({
-      selectedLabelCurrent: value
-    });
-  }
+      this.setState({
+        selectedLabelCurrent: value
+      });
+    }
 
 
 
-  ShowDestination = (text) => {
-    this.setState({
-      selectedLabelDestination: text
-    });
-  }
-
+ ShowDestination = (text) => {
+      this.setState({
+        selectedLabelDestination: text
+      });
+    }
 
 
   render() {
+
+   let btnDonePressed = () =>{
+
+     this.props.navigation.navigate('current location');
+
+   }
+
+
 
 
     return (
@@ -216,17 +226,15 @@ export default class Location extends Component {
       Button style = {
         styles.btnContainer
       }
-      onPress = {
-        () => this.props.navigation.navigate('current location')
-      } >
+      onPress = { btnDonePressed }
+       >
       Done < /Button>
 
-      <
-      /View>
+      </View>
 
+    
 
-      <
-      /View>
+      </View>
 
 
       </View>

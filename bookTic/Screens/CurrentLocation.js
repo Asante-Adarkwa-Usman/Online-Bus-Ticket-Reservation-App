@@ -6,7 +6,7 @@ import {
   View,Image,Keyboard,
   Text,Dimensions,TouchableHighlight,TouchableOpacity,
   StatusBar,TouchableWithoutFeedback,
-  TextInput,KeyboardAvoidingView, Alert,
+  TextInput,KeyboardAvoidingView, Alert
 } from 'react-native';
 
 
@@ -40,6 +40,7 @@ constructor(props){
        latitudeDelta: 0,
        longitudeDelta: 0,
 
+
      },
      markerPosition:{
        latitude: 0,
@@ -52,6 +53,7 @@ constructor(props){
  watchID: ?number = null
 
  componentDidMount() {
+
    navigator.geolocation.getCurrentPosition((position)=>{
      var lat = parseFloat(position.coords.latitude)
      var long = parseFloat(position.coords.longitude)
@@ -85,7 +87,7 @@ constructor(props){
 
      }
 
-      this.setState({initialPosition: lastRegion})
+       this.setState({initialPosition: lastRegion})
        this.setState({markerPosition: lastRegion})
 
 
@@ -117,6 +119,7 @@ constructor(props){
             </ Marker>
 
       </MapView>
+
       <View>
        <TouchableOpacity
        activeOpacity={0.7}

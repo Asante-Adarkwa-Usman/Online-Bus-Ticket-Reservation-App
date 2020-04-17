@@ -8,7 +8,7 @@ import {
   View,Image,Keyboard,
   Text,Dimensions,
   StatusBar,TouchableWithoutFeedback,TouchableOpacity,
-  TextInput,KeyboardAvoidingView, Alert,
+  TextInput,KeyboardAvoidingView, Alert,ActivityIndicator
 } from 'react-native';
 
 import {theme} from '../Constants/themes';
@@ -25,15 +25,32 @@ export default class Signup extends Component {
 
   constructor(props){
         super(props);
-
+        this.unsubscriber = null;
         this.state={
-
+              isLoading: false,
               typedEmail:'',
               typedPassword: '',
               typedConPassword:'',
               user: null,
         }
   }
+
+
+
+componentDidMount() {
+  this.unsubscriber = auth().onAuthStateChanged((changedUser) =>{
+    this.setState({
+      user: changedUser,
+      isLoading: false
+    });
+  })
+}
+
+componentWillUnmount() {
+  if(this.unsubscriber) {
+    this.unsubscriber();
+  }
+}
 
 
 
@@ -51,46 +68,64 @@ export default class Signup extends Component {
 
         }
 
-
-
       let btnSignupPressed = ()=>{
-           if(this.state.typedEmail =="" && this.state.typedPassword =="" && this.state.typedConPassword =="" ){
-             Alert.alert("Inputs Error", "Input fields data required");
-           }else if(this.state.typedPassword != this.state.typedConPassword){
-             Alert.alert("Password Mismatch Error", "The password you entered does not match");
 
-           }
+              if( this.state.typedEmail ==""  ){
+               Alert.alert("Inputs Error", "Email field data required");
+             }else if(this.state.typedPassword ==""  ){
+                Alert.alert("Inputs Error", "Password field data required");
+              }else if(this.state.typedConPassword =="" ){
+                 Alert.alert("Inputs Error", "Password field data required");
+               }
 
-           else {
+            else if(this.state.typedPassword != this.state.typedConPassword){
+              Alert.alert("Password Mismatch Error", " Passwords do not match");
 
-         auth().createUserWithEmailAndPassword(this.state.typedEmail, this.state.typedPassword)
-            .then((user) =>{
-                this.setState({user: user});
+            }
 
-                Alert. alert("Account Registeration","signup successful");
-                 if(Alert){this.props.navigation.navigate('Welcome')}
+            else {
+            this.setState({ isLoading: true });
+          auth().createUserWithEmailAndPassword(this.state.typedEmail, this.state.typedPassword)
+             .then((user) =>{
+                 this.setState({user: user});
 
-            }).catch(error => {
-                  if (error.code === 'auth/email-already-in-use') {
+                 Alert. alert("Account Registeration","signup successful");
+                 this.setState({ isLoading: false });
+                  if(Alert){this.props.navigation.navigate('Welcome')}
 
-                    Alert.alert("Signup Error" ,"The email address is already in use!");
-                    console.log('The email address is already in use!');
-                  }
+             }).catch(error => {
+                   if (error.code === 'auth/email-already-in-use') {
 
-                  if (error.code === 'auth/invalid-email') {
+                     Alert.alert("Signup Error" ,"The email address is already in use!");
+                      this.setState({ isLoading: false });
+                     console.log('The email address is already in use!');
+                   }
 
-                    Alert.alert("Signup Error","The email address is invalid!");
-                    console.log('The email address is invalid!');
-                  }
-                    if (error.code === 'auth/weak-password'){
-                      Alert.alert("Password lenght","password lenght should be at least 6 characters!");
-                        console.log('password lenght should be at least 6 characters!');
-                    }
+                   if (error.code === 'auth/invalid-email') {
 
-                  console.error(error);
-            });
-      }
-      }
+                     Alert.alert("Signup Error","The email address is invalid!");
+                      this.setState({ isLoading: false });
+                     console.log('The email address is invalid!');
+                   }
+                     if (error.code === 'auth/weak-password'){
+                       Alert.alert("Password lenght","password lenght should be at least 6 characters!");
+                        this.setState({ isLoading: false });
+                         console.log('password lenght should be at least 6 characters!');
+                     }
+
+                     if (error.code === 'auth/unknown') {
+
+                       Alert.alert(" Login Error" ,"No Connection!");
+                        this.setState({ isLoading: false });
+                       console.log('No Connection!');
+                     }
+
+                   console.error(error);
+
+             });
+       }
+       }
+
         return(
           <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
           <ScrollView>
@@ -179,6 +214,11 @@ export default class Signup extends Component {
        Signup
 
         </Button>
+
+        <View>
+      <ActivityIndicator animating={this.state.isLoading} size="large"
+            color="#FECE21" />
+       </View>
 
 
        <View style={styles.linkContainer}>
