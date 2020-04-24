@@ -15,9 +15,12 @@ import {
   TouchableWithoutFeedback,
   TextInput,
   KeyboardAvoidingView,
-  Alert,
-  Picker
+  Alert
+
 } from 'react-native';
+
+import { Picker } from 'react-native';
+
 
 import {
   theme
@@ -32,12 +35,12 @@ import { widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-nati
 
 
 export default class Location extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       selectedLabelCurrent: '',
       selectedLabelDestination: '',
-        isLoading: false,
+
 
     }
   }
@@ -62,13 +65,21 @@ export default class Location extends Component {
 
   render() {
 
-   let btnDonePressed = () =>{
+   let btnDonePressed = () => {
 
+     if(this.state.selectedLabelCurrent == "")
+     {
+       Alert.alert("Input Error", "Please select current region");
+
+     }else if(this.state.selectedLabelDestination == "")
+     {
+        Alert.alert("Input Error", "Please select destination region");
+
+      }else
+       {
      this.props.navigation.navigate('current location');
-
+      }
    }
-
-
 
 
     return (
@@ -86,23 +97,19 @@ export default class Location extends Component {
 
         }
       } >
-      <
-      Image style = {
+      <Image style = {
         styles.backGroundStyle
       }
       source = {
         require('../Constants/Assets/BgPattern.png')
       } >
-      < /Image>
+      </Image>
 
-      <
-      View >
+      <View>
 
-      <
-      View >
+      <View>
 
-      <
-      Text style = {
+      <Text style = {
         styles.textHeader
       } > Where are you currently ? < /Text>
 
@@ -156,19 +163,16 @@ export default class Location extends Component {
 
       </View>
 
-      <
-      Text style = {
+      <Text style = {
         styles.textHeader
       } >
       Where do you want to go ?
 
-        <
-        /Text>
+        </Text>
 
 
 
-        <
-        Picker style = {
+        <Picker style = {
           styles.picker
         }
       onValueChange = {
@@ -218,21 +222,19 @@ export default class Location extends Component {
 
       </Picker>
 
-      <
-      View style = {
+      <View style = {
         styles.btnStyle
       } >
-      <
-      Button style = {
+      <Button style = {
         styles.btnContainer
       }
       onPress = { btnDonePressed }
        >
-      Done < /Button>
+      Done </Button>
 
       </View>
 
-    
+
 
       </View>
 
