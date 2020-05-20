@@ -31,6 +31,7 @@
     "react-native-google-places": "^3.1.2",
     "react-native-maps": "0.27.1",
     "react-native-modalbox": "^2.0.0",
+    "react-native-paper": "^3.10.1",
     "react-native-reanimated": "^1.8.0",
     "react-native-responsive-screen": "^1.4.1",
     "react-native-router-flux": "^4.2.0",

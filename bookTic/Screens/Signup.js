@@ -6,11 +6,14 @@ import {
   StyleSheet,
   ScrollView,
   View,Image,Keyboard,
-  Text,Dimensions,
+  Dimensions,
   StatusBar,TouchableWithoutFeedback,TouchableOpacity,
-  TextInput,KeyboardAvoidingView, Alert,ActivityIndicator
+  KeyboardAvoidingView, Alert,ActivityIndicator
 } from 'react-native';
 
+import { Text,TextInput, Provider as PaperProvider } from 'react-native-paper';
+
+import Icon from 'react-native-vector-icons';
 import {theme} from '../Constants/themes';
 import Button from 'react-native-button';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -18,40 +21,22 @@ import { widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-nati
 
 import Login from '../Screens/Login';
 
-import auth from '@react-native-firebase/auth';
+
 
 
 export default class Signup extends Component {
 
   constructor(props){
         super(props);
-        this.unsubscriber = null;
-        this.state={
+
+        this.state = {
               isLoading: false,
               typedEmail:'',
               typedPassword: '',
               typedConPassword:'',
-              user: null,
+
         }
   }
-
-
-
-componentDidMount() {
-  this.unsubscriber = auth().onAuthStateChanged((changedUser) =>{
-    this.setState({
-      user: changedUser,
-      isLoading: false
-    });
-  })
-}
-
-componentWillUnmount() {
-  if(this.unsubscriber) {
-    this.unsubscriber();
-  }
-}
-
 
 
   render(){
@@ -68,67 +53,44 @@ componentWillUnmount() {
 
         }
 
-      let btnSignupPressed = ()=>{
+      let btnSignupPressed = () => {
+
+                 this.setState({ isLoading: true });
 
               if( this.state.typedEmail ==""  ){
                Alert.alert("Inputs Error", "Email field data required");
+                this.setState({ isLoading: false });
              }else if(this.state.typedPassword ==""  ){
                 Alert.alert("Inputs Error", "Password field data required");
+                this.setState({ isLoading: false });
               }else if(this.state.typedConPassword =="" ){
                  Alert.alert("Inputs Error", "Password field data required");
+                 this.setState({ isLoading: false });
                }
 
             else if(this.state.typedPassword != this.state.typedConPassword){
               Alert.alert("Password Mismatch Error", " Passwords do not match");
+              this.setState({ isLoading: false });
 
             }
 
             else {
-            this.setState({ isLoading: true });
-          auth().createUserWithEmailAndPassword(this.state.typedEmail, this.state.typedPassword)
-             .then((user) =>{
-                 this.setState({user: user});
 
-                 Alert. alert("Account Registeration","signup successful");
+            
+            Alert.alert("Account Registeration","signup successful");
                  this.setState({ isLoading: false });
                   if(Alert){this.props.navigation.navigate('Welcome')}
 
-             }).catch(error => {
-                   if (error.code === 'auth/email-already-in-use') {
+         }
 
-                     Alert.alert("Signup Error" ,"The email address is already in use!");
-                      this.setState({ isLoading: false });
-                     console.log('The email address is already in use!');
-                   }
-
-                   if (error.code === 'auth/invalid-email') {
-
-                     Alert.alert("Signup Error","The email address is invalid!");
-                      this.setState({ isLoading: false });
-                     console.log('The email address is invalid!');
-                   }
-                     if (error.code === 'auth/weak-password'){
-                       Alert.alert("Password lenght","password lenght should be at least 6 characters!");
-                        this.setState({ isLoading: false });
-                         console.log('password lenght should be at least 6 characters!');
-                     }
-
-                     if (error.code === 'auth/unknown') {
-
-                       Alert.alert(" Login Error" ,"No Connection!");
-                        this.setState({ isLoading: false });
-                       console.log('No Connection!');
-                     }
-
-                   console.error(error);
-
-             });
        }
-       }
+
 
         return(
-          <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
           <ScrollView>
+            <PaperProvider>
+          <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+
          <View  style= {styles.container}>
 
             <Image
@@ -164,16 +126,19 @@ componentWillUnmount() {
         <View style= { {alignContent:'center',justifyContent:'center',alignItems:'center',marginTop:20} }>
 
        <TextInput  style={styles.input}
-
-       placeholder="email"
-       placeholderTextColor={theme.color.greyDarker}
+       placeholder=" Enter Email Here"
+       theme={{ colors: { primary: '#FECE21',underlineColor:'transparent',}}}
+       mode= "outlined"
+       label= "Email"
+       value= {this.state.typedEmail}
+       placeholderTextColor={theme.color.greyLighter}
        keyboardType='email-address'
        autoCorrect={false}
        returnKeyType= 'next'
        clearButtonMode="always"
        onChangeText={
-       (text) =>{
-         this.setState({typedEmail: text});
+       (typedEmail) =>{
+         this.setState({typedEmail});
         }
       }
 
@@ -183,9 +148,13 @@ componentWillUnmount() {
 
        <TextInput  style={styles.input}
 
-       placeholder="password"
-       placeholderTextColor={theme.color.greyDarker}
+       placeholder=" Enter Password Here"
+       theme={{ colors: { primary: '#FECE21',underlineColor:'transparent',}}}
+       mode= "outlined"
+       label= "Password"
+       placeholderTextColor={theme.color.greyLighter}
        autoCorrect={false}
+       minLenght={6}
        secureTextEntry={true}
        value={this.state.typedPassword}
        clearButtonMode="always"
@@ -195,9 +164,13 @@ componentWillUnmount() {
 
        <TextInput  style={styles.input}
 
-       placeholder="confirm password"
+       placeholder=" Enter Password Here"
+       theme={{ colors: { primary: '#FECE21',underlineColor:'transparent',}}}
+       mode= "outlined"
+       label= "Confirm Password"
        placeholderTextColor={theme.color.greyDarker}
        autoCorrect={false}
+       minLenght={6}
        secureTextEntry={true}
        value={this.state.typedConPassword}
        clearButtonMode="always"
@@ -238,8 +211,10 @@ componentWillUnmount() {
      </View>
 
       </View>
- </ScrollView>
+
    </TouchableWithoutFeedback>
+     </PaperProvider>
+  </ScrollView>
         );
 
  }
@@ -278,7 +253,7 @@ const styles = StyleSheet.create({
    flex:1,
    flexDirection:'column',
    width: wp('100'),
-   height: hp('70'),
+   height: hp('65'),
    backgroundColor: theme.color.offWhite,
    alignItems:'center',
    borderTopLeftRadius: 10,
@@ -287,15 +262,14 @@ const styles = StyleSheet.create({
 
   },
   input:{
-    borderRadius:15,
     backgroundColor:theme.color.greyLighter,
-    width: wp('80'),
+    width:wp('80'),
     marginHorizontal: 20,
     paddingHorizontal:10,
     fontSize: 18,
     fontWeight: 'normal',
-    padding: 15,
-    marginTop:15,
+    marginBottom: 7
+    // padding: 15,
 
 
   },

@@ -6,12 +6,12 @@ import {
   StyleSheet,
   ScrollView,
   View,Image,Keyboard,
-  Text,Dimensions,TouchableHighlight,
+  Dimensions,TouchableHighlight,
   StatusBar,TouchableWithoutFeedback,
-  TextInput,KeyboardAvoidingView, Alert,ActivityIndicator
+  KeyboardAvoidingView, Alert,ActivityIndicator
 } from 'react-native';
 
-
+import { Text,TextInput, Provider as PaperProvider } from 'react-native-paper';
 import Icon from 'react-native-vector-icons';
 import {theme} from '../Constants/themes';
 import Button from 'react-native-button';
@@ -19,106 +19,53 @@ import Signup from '../Screens/Signup';
 import Location from '../Screens/Location';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
-import auth from '@react-native-firebase/auth';
+
 
 
 export default class Login extends Component{
 
   constructor(props){
     super(props);
-    this.unsubscriber = null;
+
     this.state={
       isLoading: false,
       typedEmail:'',
       typedPassword: '',
-      user: null,
+
     }
   }
-
-
-
-
-componentDidMount() {
-  this.unsubscriber = auth().onAuthStateChanged((changedUser) =>{
-    this.setState({
-      user: changedUser,
-      isLoading: false
-    });
-  })
-}
-
-componentWillUnmount() {
-  if(this.unsubscriber) {
-    this.unsubscriber();
-  }
-}
-
-
 
    render(){
 
-     let _onPressLogin =   () =>{
+     let _onPressLogin =   () => {
+        this.setState({ isLoading: true });
+       if(this.state.typedEmail == ""){
+          Alert.alert("Inputs Error", "Email field data required");
+          this.setState({ isLoading: false });
+       }else if( this.state.typedPassword==""){
+           Alert.alert("Inputs Error", "Password field data required");
+           this.setState({ isLoading: false });
+        }
 
 
-
-
-     if(this.state.typedEmail == ""){
-        Alert.alert("Inputs Error", "Email field data required");
-     }else if( this.state.typedPassword==""){
-         Alert.alert("Inputs Error", "Password field data required");
+     else{
+          Alert.alert("Account","Log in successful");
+                 this.setState({ isLoading: false });
+                 if(Alert)
+                 {
+                 this.props.navigation.navigate('location');
+                }
+          }
       }
 
 
-   else{
-
-      this.setState({ isLoading: true });
-       auth().signInWithEmailAndPassword(this.state.typedEmail, this.state.typedPassword)
-          .then((user) =>{
-
-              this.setState({user: user});
-
-              Alert.alert("Account","Log in successful");
-               this.setState({ isLoading: false });
-               if(Alert)
-               {
-               this.props.navigation.navigate('location');
-              }
-
-
-          }).catch(error => {
-                if (error.code === 'auth/user-not-found') {
-
-                  Alert.alert(" Login Error" ,"Wrong Email!");
-                   this.setState({ isLoading: false });
-                  console.log('Wrong Email!');
-                }
-
-                if (error.code === 'auth/wrong-password') {
-
-                  Alert.alert(" Login Error" ,"Wrong Password!");
-                   this.setState({ isLoading: false });
-                  console.log('Wrong Password!');
-                }
-
-                if (error.code === 'auth/unknown') {
-
-                  Alert.alert(" Login Error" ,"No Connection!");
-                   this.setState({ isLoading: false });
-                  console.log('No Connection!');
-                }
-
-         console.error(error);
-        });
-
-      }
-
-    }
 
     return(
+         <ScrollView>
+          <PaperProvider>
 
      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-     <ScrollView
-     >
+
       <View  style= {styles.container}>
 
              <Image
@@ -147,7 +94,11 @@ componentWillUnmount() {
         <View style= { {alignContent:'center',justifyContent:'center',alignItems:'center', marginTop:20} }>
        <TextInput  style={styles.input}
 
-       placeholder=" email"
+       placeholder=" Enter Email Here"
+       theme={{ colors: { primary: '#FECE21',underlineColor:'transparent',}}}
+       mode= "outlined"
+       label= "Email"
+       value= {this.state.typedEmail}
        placeholderTextColor={theme.color.greyDarker}
        keyboardType='email-address'
        autoCorrect={false}
@@ -161,10 +112,13 @@ componentWillUnmount() {
        />
 
        <TextInput  style={styles.input}
-
-       placeholder="password"
+       mode= "outlined"
+       theme={{ colors: { primary: '#FECE21',underlineColor:'transparent',}}}
+       label= "password"
+       placeholder="Enter Password Here"
        placeholderTextColor={theme.color.greyDarker}
        autoCorrect={false}
+       minLenght={6}
        secureTextEntry={true}
        onChangeText={
        (text) =>{
@@ -173,7 +127,9 @@ componentWillUnmount() {
      }
 
        />
-      <Button style={styles.btnContainer}
+      <Button
+       style={styles.btnContainer}
+
        onPress= { _onPressLogin }
        >
        Login
@@ -196,14 +152,17 @@ componentWillUnmount() {
         > SignUp
          </Text>
          </Button>
-       </View>
+           </View>
 
-       </View>
-     </View>
+           </View>
+         </View>
 
-      </View>
-  </ScrollView>
-   </TouchableWithoutFeedback>
+          </View>
+
+       </TouchableWithoutFeedback>
+
+   </PaperProvider>
+    </ScrollView>
 
     );
   }
@@ -239,7 +198,7 @@ const styles = StyleSheet.create({
    flexDirection:'column',
    marginTop:20,
    width: wp('100'),
-   height: hp('70'),
+   height: hp('65'),
   backgroundColor: theme.color.offWhite,
   alignItems:'center',
   borderTopLeftRadius: 10,
@@ -247,16 +206,15 @@ const styles = StyleSheet.create({
 
  },
  input:{
-   borderRadius:15,
    backgroundColor:theme.color.greyLighter,
    width:wp('80'),
    marginHorizontal: 20,
    paddingHorizontal:10,
-   marginBottom:10,
+   marginBottom:7,
    fontSize: 18,
    fontWeight: 'normal',
-   padding: 15,
-   marginTop: 10,
+
+
 
 
  },
