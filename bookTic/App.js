@@ -8,6 +8,7 @@ import Splash from './Screens/Splash';
 import Location from './Screens/Location';
 import CurrentLocation from './Screens/CurrentLocation';
 import AvailableBusStations from './Screens/AvailableBusStations';
+import ChooseOptionButtons from './Screens/ChooseOptionButtons';
 
 
 
@@ -40,6 +41,11 @@ export default class App extends Component{
 							headerShown: true,
 							headerStyle: {backgroundColor:"#FECE21"}
 						 }} />
+						 <Stack.Screen  name= "choose option" component={ChooseOptionButtons}
+						 options={{
+						 headerShown: false,
+						}} />
+
 
 
 

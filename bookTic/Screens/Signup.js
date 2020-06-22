@@ -28,7 +28,7 @@ export default class Signup extends Component {
 
   constructor(props){
         super(props);
-
+       this.myTextInput = React.createRef();
         this.state = {
               isLoading: false,
               typedEmail:'',
@@ -76,8 +76,9 @@ export default class Signup extends Component {
 
             else {
 
-            
+
             Alert.alert("Account Registeration","signup successful");
+                 this.myTextInput.current.clear();
                  this.setState({ isLoading: false });
                   if(Alert){this.props.navigation.navigate('Welcome')}
 
@@ -88,9 +89,9 @@ export default class Signup extends Component {
 
         return(
           <ScrollView>
-            <PaperProvider>
-          <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
 
+          <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+            <PaperProvider>
          <View  style= {styles.container}>
 
             <Image
@@ -125,7 +126,9 @@ export default class Signup extends Component {
 
         <View style= { {alignContent:'center',justifyContent:'center',alignItems:'center',marginTop:20} }>
 
-       <TextInput  style={styles.input}
+
+       <TextInput  ref={this.myTextInput}
+       style={styles.input}
        placeholder=" Enter Email Here"
        theme={{ colors: { primary: '#FECE21',underlineColor:'transparent',}}}
        mode= "outlined"
@@ -146,7 +149,9 @@ export default class Signup extends Component {
 
        />
 
-       <TextInput  style={styles.input}
+       <TextInput  ref={this.myTextInput}
+
+       style={styles.input}
 
        placeholder=" Enter Password Here"
        theme={{ colors: { primary: '#FECE21',underlineColor:'transparent',}}}
@@ -162,7 +167,9 @@ export default class Signup extends Component {
 
        />
 
-       <TextInput  style={styles.input}
+       <TextInput ref={this.myTextInput}
+
+        style={styles.input}
 
        placeholder=" Enter Password Here"
        theme={{ colors: { primary: '#FECE21',underlineColor:'transparent',}}}
@@ -178,6 +185,7 @@ export default class Signup extends Component {
 
 
        />
+
 
       <Button style={styles.btnContainer}
        onPress= {btnSignupPressed}
@@ -211,9 +219,9 @@ export default class Signup extends Component {
      </View>
 
       </View>
-
-   </TouchableWithoutFeedback>
      </PaperProvider>
+   </TouchableWithoutFeedback>
+
   </ScrollView>
         );
 

@@ -18,6 +18,7 @@ import MapView from 'react-native-maps';
 import { Marker } from 'react-native-maps';
 import Geolocation from '@react-native-community/geolocation';
 import AvailableBusStations from '../Screens/AvailableBusStations';
+import { widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
 
 const {width, height} = Dimensions.get('window')
@@ -114,7 +115,7 @@ constructor(props){
 
             < Marker
               coordinate={this.state.markerPosition}
-              title={"My Current Location"}
+              title={"Current Location"}
               >
             </ Marker>
 
@@ -122,16 +123,19 @@ constructor(props){
 
       <View>
        <TouchableOpacity
-       activeOpacity={0.7}
+       activeOpacity={0.4}
        onPress={ () => {
         this.props.navigation.navigate('bus stations')
         }
        }
        style={styles.TouchableOpacityStyle}>
+
        <Image
          style={styles.FloatingButtonStyle}
           source={require('../Constants/Assets/Icons/search.png')}
+
        />
+
      </TouchableOpacity>
    </View>
 
@@ -153,18 +157,19 @@ searchContainer:{
 
 TouchableOpacityStyle: {
   position: 'absolute',
-  width: 50,
-  height: 50,
+  width: wp(100),
+  height: hp(20),
   alignItems: 'center',
+  zIndex: 10,
   justifyContent: 'center',
-  right: 30,
-  bottom: 30,
+  bottom: 20,
+
 },
 
 FloatingButtonStyle: {
-  resizeMode: 'contain',
-  width: 50,
-  height: 50,
+  resizeMode: "contain",
+  width: wp(90),
+  height: hp(10),
   backgroundColor:theme.color.appColor
 },
 

@@ -95,6 +95,15 @@ export default class Location extends Component {
       } >
       </Image>
 
+      <View style={styles.logoContainer}>
+
+          <Image
+           style={styles.logoStyle}
+            source={require('../Constants/Assets/logo.png')}
+          ></Image>
+
+          </View>
+
       <View>
 
       <Text style = {
@@ -241,6 +250,22 @@ const styles = StyleSheet.create({
     bottom: 0,
     right: 0,
     opacity: 0.1
-  }
+  },
+  logoContainer:{
+
+       alignContent:'center',
+       alignItems: 'center',
+       justifyContent:'center',
+      marginBottom: 10
+   },
+
+  logoStyle:{
+
+   width:wp('20'),
+   height:hp('18'),
+   backgroundColor: 'transparent',
+   paddingHorizontal: 10,
+
+  },
 
 });

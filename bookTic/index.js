@@ -9,7 +9,7 @@ import Login from './Screens/Login';
 import Location from './Screens/Location';
 import CurrentLocation from './Screens/CurrentLocation';
 import AvailableBusStations from './Screens/AvailableBusStations';
-
+import ChooseOptionButtons from './Screens/ChooseOptionButtons';
 
  class Main extends Component{
  	 constructor(props){
@@ -30,9 +30,10 @@ import AvailableBusStations from './Screens/AvailableBusStations';
 render() {
 
     //show Splash screen else show the app screen or component
-	  const { currentScreen } = this.state
+	       const { currentScreen } = this.state
+
          let mainScreen = currentScreen ==='Splash' ? <Splash /> : <App />
-       return mainScreen
+          return mainScreen
 }
 
 }

@@ -26,7 +26,7 @@ export default class Login extends Component{
 
   constructor(props){
     super(props);
-
+     this.myTextInput = React.createRef();
     this.state={
       isLoading: false,
       typedEmail:'',
@@ -38,6 +38,8 @@ export default class Login extends Component{
    render(){
 
      let _onPressLogin =   () => {
+
+        this.myTextInput.current.clear();
         this.setState({ isLoading: true });
        if(this.state.typedEmail == ""){
           Alert.alert("Inputs Error", "Email field data required");
@@ -50,11 +52,13 @@ export default class Login extends Component{
 
      else{
           Alert.alert("Account","Log in successful");
+
                  this.setState({ isLoading: false });
                  if(Alert)
                  {
                  this.props.navigation.navigate('location');
                 }
+
           }
       }
 
@@ -92,7 +96,11 @@ export default class Login extends Component{
 
 
         <View style= { {alignContent:'center',justifyContent:'center',alignItems:'center', marginTop:20} }>
-       <TextInput  style={styles.input}
+
+       <TextInput
+        ref={this.myTextInput}
+
+       style={styles.input}
 
        placeholder=" Enter Email Here"
        theme={{ colors: { primary: '#FECE21',underlineColor:'transparent',}}}
@@ -111,7 +119,10 @@ export default class Login extends Component{
 
        />
 
-       <TextInput  style={styles.input}
+       <TextInput
+       ref={this.myTextInput}
+
+       style={styles.input}
        mode= "outlined"
        theme={{ colors: { primary: '#FECE21',underlineColor:'transparent',}}}
        label= "password"
@@ -229,6 +240,7 @@ const styles = StyleSheet.create({
    fontWeight:'normal',
    borderRadius:15,
    padding: 10,
+   marginTop: 10,
    marginHorizontal: 20,
    marginBottom: 10
 

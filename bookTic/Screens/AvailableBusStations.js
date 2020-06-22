@@ -24,10 +24,12 @@ import {
 
 import Button from 'react-native-button';
 import Icon from 'react-native-vector-icons';
+import Ionicons from 'react-native-ionicons';
 import MapView from 'react-native-maps';
 import { Marker } from 'react-native-maps';
 import Geolocation from '@react-native-community/geolocation';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
+import PlacesInput from 'react-native-places-input';
 
 
 
@@ -112,16 +114,15 @@ class AvailableBusStations extends Component {
    }
 
 
+
   render() {
     return (
-
-
 
       <View style={{flex:1,fontFamily: 'sans serif'}}>
 
             <MapView
 
-            style={styles.mapStyle}
+            style={{flex:1}}
             region={this.state.initialPosition}>
 
                < Marker
@@ -131,35 +132,7 @@ class AvailableBusStations extends Component {
                </ Marker>
 
          </MapView>
-
-          <View style={styles.inputContainer}>
-          <TextInput  style={styles.input}
-
-          placeholder="search by name of place"
-          placeholderTextColor={theme.color.greyDarker}
-          keyboardType='email-address'
-          autoCorrect={false}
-          returnKeyType= 'done'
-          clearButtonMode = "always"
-          onChangeText = {
-          (text) => {
-            this.setState({searchPlace: text});
-           }
-         }
-
-
-
-          />
-
-          </View>
-
-    </View>
-
-
-
-
-
-
+      </View>
 
     );
   }
@@ -167,38 +140,26 @@ class AvailableBusStations extends Component {
 
 export default AvailableBusStations;
 
-
 const styles = StyleSheet.create({
+  searchResult: {
+    width: wp(95),
+    position: 'absolute',
+    margin: 5,
+    top: 20,
+     left: 5,
+     alignItems: 'center',
+     justifyContent: 'center',
+   },
+   chooseContainer: {
+     position: 'absolute',
+     bottom: 0,
+     backgroundColor: theme.color.appColor,
+     height: hp(15),
+     borderTopLeftRadius: 10,
+     borderTopRightRadius: 10,
+     alignItems: 'center',
+     justifyContent: 'center',
 
+   },
 
-    mapStyle:{
-    flex:1
-  },
-
-  input:{
-    borderRadius:15,
-    backgroundColor:theme.color.greyDarker,
-    width:wp('80'),
-    marginHorizontal: 20,
-    paddingHorizontal:10,
-    marginBottom:10,
-    fontSize: 18,
-    fontWeight: 'normal',
-    padding: 15,
-    marginTop: 10,
-
-
-  },
-  inputContainer:{
-   alignContent:'center',
-   justifyContent:'center',
-   alignItems:'center',
-   position: 'absolute',
-   zIndex: 100,
-   top: 30,
-   left: 30,
-
-
-
-  }
 });
