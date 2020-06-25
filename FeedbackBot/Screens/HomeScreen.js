@@ -11,6 +11,7 @@ import {
 } from 'react-native';
 
 import Button  from 'react-native-button';
+import {theme} from '../Constants/themes';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import { Avatar, Card, Title, Paragraph } from 'react-native-paper';
 
@@ -26,10 +27,14 @@ export default class HomeScreen extends Component{
 	render(){
 
 		
+	
 		return(
 
-           <SafeAreaView>
-            <ScrollView>
+	 	
+   
+   <View>
+      <ScrollView>
+
 
         <View style={{ flex: 1, padding: 6, backgroundColor: '#FFFFFF', alignItems:'center'}}>
         <Image
@@ -45,7 +50,7 @@ export default class HomeScreen extends Component{
           <View style={{ borderWidth: 1, borderColor: '#e9e9ee', marginVertical: 5 }}></View>
             
              <TouchableWithoutFeedback 
-              onPress={()=> Linking.openURL('http://google.com')}>
+              onPress={()=> Linking.openURL('https://myportfoliowebsiteaau.imfast.io/')}>
                 <Card>
 
           <Card.Content>
@@ -54,10 +59,10 @@ export default class HomeScreen extends Component{
           </Card.Content>
           <Card.Cover source={require('../Constants/Assets/Images/services.jpg')}/>
           <Card.Actions>
-          <View  style={{backgroundColor: '#AA9400',  borderRadius: 30,  color: 'white', marginVertical: 5 }}>
+          <View  style={{backgroundColor: '#F1BB13',  borderRadius: 30,  color: 'white', marginVertical: 5 }}>
            <Button
-             style={{fontSize: 15, color: '#382D07', padding: 7, fontWeight: 'bold'}}
-            onPress={()=> Linking.openURL('http://google.com')}
+             style={{fontSize: 15, color: '#ffffff', padding: 7, fontWeight: 'bold'}}
+            onPress={()=> Linking.openURL('https://myportfoliowebsiteaau.imfast.io/')}
            >Check it out</Button>
            </View>
           </Card.Actions>
@@ -76,9 +81,9 @@ export default class HomeScreen extends Component{
               </Card.Content>
               <Card.Cover source={require('../Constants/Assets/Images/project.jpg')} />
               <Card.Actions>
-              <View  style={{backgroundColor: '#AA9400',  borderRadius: 30, marginVertical: 5  }}>
+              <View  style={{backgroundColor: '#F1BB13',  borderRadius: 30, marginVertical: 5  }}>
                <Button
-                style={{fontSize: 15, color: '#382D07', padding: 7, fontWeight: 'bold'}}
+                style={{fontSize: 15, color: '#ffffff', padding: 7, fontWeight: 'bold'}}
                 onPress={()=> Linking.openURL('http://google.com')}
                >Check it out</Button>
                </View>
@@ -98,9 +103,9 @@ export default class HomeScreen extends Component{
         </Card.Content>
         <Card.Cover source={require('../Constants/Assets/Images/price.jpg')} />
         <Card.Actions>
-        <View  style={{backgroundColor: '#AA9400',  borderRadius: 30, marginVertical: 5 }}>
+        <View  style={{backgroundColor: '#F1BB13',  borderRadius: 30, marginVertical: 5 }}>
          <Button
-         style={{fontSize: 15, color: '#382D07', padding: 7,fontWeight: 'bold'}}
+         style={{fontSize: 15, color: '#ffffff', padding: 7,fontWeight: 'bold'}}
           onPress={()=> Linking.openURL('http://google.com')}
          >Check it out</Button>
          </View>
@@ -121,9 +126,9 @@ export default class HomeScreen extends Component{
               </Card.Content>
               <Card.Cover source={require('../Constants/Assets/Images/team.jpg')} />
               <Card.Actions>
-              <View  style={{backgroundColor: '#AA9400',  borderRadius: 30, marginVertical: 5  }}>
+              <View  style={{backgroundColor: '#F1BB13',  borderRadius: 30, marginVertical: 5  }}>
                <Button
-                style={{fontSize: 15, color: '#382D07', padding: 7, fontWeight: 'bold'}}
+                style={{fontSize: 15, color: '#ffffff', padding: 7, fontWeight: 'bold'}}
                 onPress={()=> Linking.openURL('http://google.com')}
                >Check it out</Button>
                </View>
@@ -143,25 +148,40 @@ export default class HomeScreen extends Component{
               </Card.Content>
               <Card.Cover source={require('../Constants/Assets/Images/contact.jpg')} />
               <Card.Actions>
-              <View  style={{backgroundColor: '#AA9400',  borderRadius: 30, marginVertical: 5  }}>
+              <View  style={{backgroundColor: '#F1BB13',  borderRadius: 30, marginVertical: 5  }}>
                <Button
-                style={{fontSize: 15, color: '#382D07', padding: 7, fontWeight: 'bold'}}
+                style={{fontSize: 15, color: '#ffffff', padding: 7, fontWeight: 'bold'}}
                 onPress={()=> Linking.openURL('http://google.com')}
                >Check it out</Button>
                </View>
               </Card.Actions>
             </Card>
-          </TouchableWithoutFeedback>    
+          </TouchableWithoutFeedback>  
 
+        </ScrollView>
 
-        
-       </ScrollView>
+          
+      <View style={styles.TouchableOpacityStyle}> 
 
-      
+       <TouchableOpacity
+        activeOpacity={0.2}
+        onPress={ () => {
+        this.props.navigation.navigate('Chat')
+        }}
+       >
 
+       <Image
+         style={styles.FloatingButtonStyle}
+          source={require('../Constants/Assets/Icons/robot.png')}
 
-    </SafeAreaView>
+       />
 
+         </TouchableOpacity>
+         
+       </View> 
+    
+        </View>  
+    
 
 	  );
 	}
@@ -171,5 +191,21 @@ export default class HomeScreen extends Component{
 const styles = StyleSheet.create({
 
  
+TouchableOpacityStyle: {
+  position: 'absolute',
+  zIndex: 10,
+  justifyContent: 'flex-end',
+  alignItems: 'flex-end',
+  top:40,
+  left:200,
+  bottom:30
 
+},
+
+FloatingButtonStyle: {
+
+  resizeMode: "contain",
+  marginHorizontal: 40
+
+},
 });

@@ -21,12 +21,10 @@ import FeedbackChatWithBot from './Screens/FeedbackChatWithBot';
           gestureEnabled: true,    
           headerTitleAlign: 'center',
           headerStyle: {
-          backgroundColor: "#E2C600",
+          backgroundColor: "#F1BB13",
           },
-          headerTintColor: '#382D07',
-          headerTitleStyle :{
-            fontWeight: 'bold',
-          },
+          headerTintColor: '#fff',
+         
         }}
             > 
              
@@ -38,13 +36,13 @@ import FeedbackChatWithBot from './Screens/FeedbackChatWithBot';
              <Stack.Screen  name= "Home" component={ HomeScreen } options={{
               title: "Home",
               headerShown: true ,
-              headerStyle: {backgroundColor:"#E2C600"}
+              headerStyle: {backgroundColor:"#F1BB13"}
              }} />
 
               <Stack.Screen  name= "Chat" component={ FeedbackChatWithBot } options={{
-              title: "Chat",
+              title: "Feedback",
               headerShown: true ,
-              headerStyle: {backgroundColor:"#E2C600"}
+              headerStyle: {backgroundColor:"#F1BB13"}
              }} />
 
            

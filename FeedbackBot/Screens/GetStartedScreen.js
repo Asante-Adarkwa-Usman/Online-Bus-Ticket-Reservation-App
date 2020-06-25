@@ -3,7 +3,7 @@ import {
        SafeAreaView,
       StyleSheet,
       View,Image,
-      Text,
+      Text,ScrollView,
       Dimensions,
      Alert,
 } from 'react-native'
@@ -30,12 +30,12 @@ export default class GetStartedScreen extends Component{
 
 		return(
         
-
+         <ScrollView>
            <View  style= {styles.container}>
 
            <Image
             style={styles.imageStyle}
-            source={require('../Constants/Assets/Images/smallCollab.jpg')}
+            source={require('../Constants/Assets/Images/team3.jpg')}
            ></Image>
 
         <View style={styles.mainContainer}>
@@ -47,9 +47,9 @@ export default class GetStartedScreen extends Component{
                </Text>
 
 
-               <View style={{backgroundColor: '#AA9400',    fontWeight: '600', position: 'absolute', top: 0, right: 0,marginVertical: 120,marginHorizontal: 20, zIndex: 100, borderRadius: 30}}>
+               <View style={{backgroundColor: '#F1BB13',    fontWeight: '600', position: 'absolute', top: 0, right: 0,marginVertical: 120,marginHorizontal: 20, borderRadius: 30}}>
                <Button
-                    style={{fontSize: 20,color:'#382D07' , padding: 9}}
+                    style={{fontSize: 20,color:'#ffffff' , padding: 9}}
                     onPress={  goHome }
                   > Get Started
 
@@ -62,7 +62,7 @@ export default class GetStartedScreen extends Component{
 
        </View>
 
-
+     </ScrollView>
 
 
 
@@ -81,7 +81,7 @@ const styles = StyleSheet.create({
     justifyContent:'center',
     flexDirection:'column',
     alignItems: 'center',
-    backgroundColor: '#FFFFFF' ,
+    backgroundColor: '#F3F3FF' ,
     fontFamily: 'sans serif',
 
 
@@ -92,8 +92,9 @@ const styles = StyleSheet.create({
     alignContent: 'center',
     alignItems: 'center',
     marginVertical: 70,
-    resizeMode: 'contain',
+    resizeMode: 'center',
     height: hp('40'),
+
     
     
 
@@ -104,9 +105,9 @@ const styles = StyleSheet.create({
      flex:1,
      flexDirection:'column',
     alignItems: 'center',
-    backgroundColor: '#e9e9ee',
+    backgroundColor: '#F4EBCA',
     width: wp('100'),
-    height: hp('20'),
+    height: hp('40'),
     borderTopLeftRadius: 30,
     borderTopRightRadius: 30,
 
