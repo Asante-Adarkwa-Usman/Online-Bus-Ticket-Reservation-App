@@ -35,7 +35,7 @@ import FeedbackChatWithBot from './Screens/FeedbackChatWithBot';
               
              <Stack.Screen  name= "Home" component={ HomeScreen } options={{
               title: "Home",
-              headerShown: true ,
+              headerShown: false ,
               headerStyle: {backgroundColor:"#F1BB13"}
              }} />
 

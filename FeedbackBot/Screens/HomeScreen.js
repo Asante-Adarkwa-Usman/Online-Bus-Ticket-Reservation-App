@@ -7,7 +7,7 @@ import {
   View,Image,Keyboard,
   Dimensions,TouchableHighlight,Text,
   StatusBar,TouchableWithoutFeedback,TouchableOpacity,
-  KeyboardAvoidingView, Alert,ActivityIndicator
+  KeyboardAvoidingView, Alert,ActivityIndicator,BackHandler
 } from 'react-native';
 
 import Button  from 'react-native-button';
@@ -19,7 +19,29 @@ export default class HomeScreen extends Component{
 	constructor(props){
 		super(props);
 	}
-    
+ 
+
+
+  backAction = () => {
+    Alert.alert("Warning", "Are you sure you want to exit?", [
+      {
+        text: "Cancel",
+        onPress: () => null,
+        style: "cancel"
+      },
+      { text: "YES", onPress: () => BackHandler.exitApp() }
+    ]);
+    return true;
+  };
+
+  componentDidMount() {
+    this.backHandler = BackHandler.addEventListener(
+      "hardwareBackPress",
+      this.backAction
+    );
+  }
+
+
         gotoChat = () => {
 		 	this.props.navigation.navigate('Chat')
 		 }
@@ -164,7 +186,7 @@ export default class HomeScreen extends Component{
       <View style={styles.TouchableOpacityStyle}> 
 
        <TouchableOpacity
-        activeOpacity={0.2}
+        activeOpacity={0.5}
         onPress={ () => {
         this.props.navigation.navigate('Chat')
         }}
