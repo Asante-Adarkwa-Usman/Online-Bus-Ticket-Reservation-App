@@ -15,12 +15,23 @@ import {theme} from '../Constants/themes';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import { Avatar, Card, Title, Paragraph } from 'react-native-paper';
 
+
+
+
+
+
+
 export default class HomeScreen extends Component{
 	constructor(props){
 		super(props);
-	}
- 
+   
 
+
+	}
+
+
+
+//Exit app when the back button is pressed on the device
 
   backAction = () => {
     Alert.alert("Warning", "Are you sure you want to exit?", [
@@ -34,26 +45,31 @@ export default class HomeScreen extends Component{
     return true;
   };
 
+
   componentDidMount() {
     this.backHandler = BackHandler.addEventListener(
       "hardwareBackPress",
       this.backAction
     );
-  }
+
+}
+
 
 
         gotoChat = () => {
-		 	this.props.navigation.navigate('Chat')
-		 }
+
+        this.props.navigation.navigate('Chat');
+   	 };
+
 
 	render(){
 
-		
-	
+
+
 		return(
 
-	 	
-   
+
+
    <View>
       <ScrollView>
 
@@ -68,10 +84,10 @@ export default class HomeScreen extends Component{
          > FriendsBuilt </Text>
 
         </View>
-        
+
           <View style={{ borderWidth: 1, borderColor: '#e9e9ee', marginVertical: 5 }}></View>
-            
-             <TouchableWithoutFeedback 
+
+             <TouchableWithoutFeedback
               onPress={()=> Linking.openURL('https://myportfoliowebsiteaau.imfast.io/')}>
                 <Card>
 
@@ -90,9 +106,9 @@ export default class HomeScreen extends Component{
           </Card.Actions>
           </Card>
 
-        </TouchableWithoutFeedback>  
-      
-       <TouchableWithoutFeedback 
+        </TouchableWithoutFeedback>
+
+       <TouchableWithoutFeedback
               onPress={()=> Linking.openURL('http://google.com')}>
 
           <Card>
@@ -111,10 +127,10 @@ export default class HomeScreen extends Component{
                </View>
               </Card.Actions>
            </Card>
-          </TouchableWithoutFeedback>   
+          </TouchableWithoutFeedback>
 
-      
-      <TouchableWithoutFeedback 
+
+      <TouchableWithoutFeedback
               onPress={()=> Linking.openURL('http://google.com')}>
 
          <Card>
@@ -135,10 +151,10 @@ export default class HomeScreen extends Component{
 
         </Card>
 
-       </TouchableWithoutFeedback>   
+       </TouchableWithoutFeedback>
 
-          <TouchableWithoutFeedback 
-              onPress={()=> Linking.openURL('http://google.com')}>  
+          <TouchableWithoutFeedback
+              onPress={()=> Linking.openURL('http://google.com')}>
 
               <Card>
 
@@ -156,11 +172,11 @@ export default class HomeScreen extends Component{
                </View>
               </Card.Actions>
             </Card>
-          </TouchableWithoutFeedback>    
+          </TouchableWithoutFeedback>
 
 
-          <TouchableWithoutFeedback 
-              onPress={()=> Linking.openURL('http://google.com')}>  
+          <TouchableWithoutFeedback
+              onPress={()=> Linking.openURL('http://google.com')}>
 
               <Card>
 
@@ -178,12 +194,12 @@ export default class HomeScreen extends Component{
                </View>
               </Card.Actions>
             </Card>
-          </TouchableWithoutFeedback>  
+          </TouchableWithoutFeedback>
 
         </ScrollView>
 
-          
-      <View style={styles.TouchableOpacityStyle}> 
+
+      <View style={styles.TouchableOpacityStyle}>
 
        <TouchableOpacity
         activeOpacity={0.5}
@@ -199,11 +215,11 @@ export default class HomeScreen extends Component{
        />
 
          </TouchableOpacity>
-         
-       </View> 
-    
-        </View>  
-    
+
+       </View>
+
+        </View>
+
 
 	  );
 	}
@@ -212,7 +228,7 @@ export default class HomeScreen extends Component{
 
 const styles = StyleSheet.create({
 
- 
+
 TouchableOpacityStyle: {
   position: 'absolute',
   zIndex: 10,

@@ -5,6 +5,7 @@ import App from './App';
 import {name as appName} from './app.json';
 import GetStartedScreen from './Screens/GetStartedScreen';
 import HomeScreen from './Screens/HomeScreen';
+import CheckInternetConnection from './Screens/CheckInternetConnection';
 import FeedbackChatWithBot from './Screens/FeedbackChatWithBot';
 
 

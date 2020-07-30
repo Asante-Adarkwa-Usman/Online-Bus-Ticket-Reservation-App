@@ -14,11 +14,18 @@ import { widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-nati
 import HomeScreen from '../Screens/HomeScreen'
 
 
+
 export default class GetStartedScreen extends Component{
      constructor(props){
         super(props);
 
+    
      }
+
+
+
+
+   
 
         render(){
 
